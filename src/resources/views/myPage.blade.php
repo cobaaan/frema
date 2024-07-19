@@ -6,12 +6,9 @@
 
 @section('content')
 <div class="profile">
-    <img class="profile__img" src="images/italian.jpg" alt="">
-    <h2 class="profile__name">ユーザー名</h2>
-    <form class="profile__form" action="" method="post">
-        @csrf
-        <button class="profile__form--btn">プロフィールを編集</button>
-    </form>
+    <img class="profile__img" src="{{ asset($auth->profile->image_path) }}" alt="">
+    <h2 class="profile__name">{{ $auth->name }}</h2>
+    <a class="profile__btn" href="/profile">プロフィールを編集</a>
 </div>
 
 <nav class="select__nav">

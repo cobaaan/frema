@@ -12,16 +12,16 @@
     <title>coachtechフリマ</title>
 </head>
 <div class="header">
-    <form class="header__form" action="get">
+    <form class="header__form" action="/logout" method="post">
+        @csrf
         <nav class="header__nav">
             <ul class="header__nav--ul">
                 <li class="header__nav--li"><a href="/"><img src="images/logo.svg" alt=""></a></li>
                 <li class="header__nav--li"><input class="header__nav--li-txt" type="text" name="text" placeholder=" 何をお探しですか？"></li>
                 <li class="header__nav--li">
                     @auth
-                    <a class="header__nav--li-btn" href="/logout">ログアウト</a>
+                    <button class="header__nav--li-btn">ログアウト</button>
                     <a class="header__nav--li-btn" href="/my_page">マイページ</a>
-                    
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
