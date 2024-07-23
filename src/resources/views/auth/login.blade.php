@@ -12,7 +12,7 @@
         <p class="content__txt">メールアドレス</p>
         <input class="content__input" type="text" name="email">
         <p class="content__txt">パスワード</p>
-        <input class="content__input" type="text" name="password" id="">
+        <input class="content__input" type="password" name="password" id="">
         <br>
         <button class="content__btn">ログインする</button>
     </form>
