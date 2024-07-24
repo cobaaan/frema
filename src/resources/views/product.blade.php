@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/product.css') }}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 @endsection
 
 @section('content')
@@ -35,34 +36,39 @@
         <p class="product__txt--txt">{{ $brand->name }}</p>
         <h2 class="product__txt--price">¥{{ $product->price }}(値段)</h2>
         
-        
-        
-        
-        <form action="?" method="post">
-            @csrf
+        <div class="product__txt--star-comment">
             @php
-            $color = 'card__form--heart-img';
+            $color = 'card__form--icon-star-red';
             @endphp
             
-            @foreach($favorites as $favorite)
-            @if($favorite['user_id'] === $auth->id && $favorite['product_id'] === $product->id)
+            @if($favorite->isEmpty())
             @php
-            $color = 'card__form--heart-red';
+            $color = 'card__form--icon-star-gray';
             @endphp
             @endif
-            @endforeach
-            <input type="hidden" name="product_id" value="{{ $product->id }}">
-            <button class="card__form--heart" formaction="{{ route('favorite.toggle', $product->id) }}"><img  class="{{ $color }}" src="images/life.jpg"></button>
-        </form>
-        
-        
-        
-        
-        
-        <div class="product__txt--star-comment">
-            <p class="product__txt--star">星</p>
-            <p class="product__txt--comment">コメント</p>
+            <form class="product__txt--star" action="?" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="card__form--icon" formaction="{{ route('favorite.toggle', $product->id) }}">
+                    <i class="card__form--icon-star bi bi-star {{ $color }}"></i>
+                    <p class="card__form--icon-txt">{{ count($favorites) }}</p>
+                </button>
+                <button class="card__form--icon" formaction="/comment">
+                    <i class="card__form--icon-chat bi bi-chat"></i>
+                    <p class="card__form--icon-txt">{{ count($comments) }}</p>
+                </button>
+            </form>
+            {{--
+            <form action="/comment" method="get">
+                @csrf
+                <button class="card__form--icon" formaction="/comment">
+                    <i class="card__form--icon-chat bi bi-chat"></i>
+                    <p class="card__form--icon-txt">{{ count($comments) }}</p>
+                </button>
+            </form>
+            --}}
         </div>
+        
         <form action="" method="">
             @csrf
             <button class="product__txt--btn">購入する</button>
@@ -84,7 +90,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection

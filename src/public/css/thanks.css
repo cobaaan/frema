@@ -1,0 +1,15 @@
+.content {
+    width: 40%;
+    margin: 50px auto 0;
+    text-align: center;
+}
+
+.content__ttl {
+    font-size: 3rem;
+}
+
+.content__a {
+    display: block;
+    margin-top: 20px;
+    font-size: 1.4rem;
+}

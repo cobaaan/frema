@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/comment.css') }}" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 @endsection
 
 @section('content')
@@ -28,46 +29,72 @@
 </div>
 
 <div class="main">
-    <img class="main__img" src="images/italian.jpg" alt="">
+    <img class="main__img" src="{{ $product->image_path }}" alt="">
     
     <div class="main__info">
-        <h2 class="main__info--ttl">商品名</h2>
-        <p class="main__info--txt">ブランド名</p>
-        <h2 class="main__info--price">¥47,000(値段)</h2>
-        <div class="main__info--favorite-comment">
-            <p class="main__info--favorite-icon">星</p>
-            <p class="main__info--comment-icon">コメント</p>
-        </div>
-        <div class="main__info--comment">
-            <div class="main__info--comment-index">
-                <img class="main__info--comment-img" src="images/italian.jpg" alt="">
-                <p class="main__info--comment-name">名前</p>
+        <div class="main__info">
+            <h2 class="main__info--ttl">{{ $product->name }}</h2>
+            <p class="main__info--txt">{{ $brand->name }}</p>
+            <h2 class="main__info--price">¥{{ $product->price }}(値段)</h2>
+            
+            <div class="main__txt--star-comment">
+                @php
+                $color = 'card__form--icon-star-red';
+                @endphp
+                
+                @if($favorite->isEmpty())
+                @php
+                $color = 'card__form--icon-star-gray';
+                @endphp
+                @endif
+                <form action="?" method="post">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <button class="card__form--icon" formaction="{{ route('favorite.toggle', $product->id) }}">
+                        <i class="card__form--icon-star bi bi-star {{ $color }}"></i>
+                        <p class="card__form--icon-txt">{{ count($favorites) }}</p>
+                    </button>
+                    <button class="card__form--icon" formaction="/comment">
+                        <i class="card__form--icon-chat bi bi-chat"></i>
+                        <p class="card__form--icon-txt">{{ count($comments) }}</p>
+                    </button>
+                </form>
             </div>
-            <p class="main__info--comment-txt">赤サタな濱家らわ</p>
-        </div>
-        <div class="main__info--comment">
-            <div class="main__info--comment-index">
-                <img class="main__info--comment-img" src="images/italian.jpg" alt="">
-                <p class="main__info--comment-name">名前</p>
+            
+            @foreach($comments as $comment)
+            <div class="main__info--comment">
+                @if($auth->id === $comment->user->id)
+                @php
+                $own = 'main__info--comment-index-right';
+                @endphp
+                @else
+                @php
+                $own = '';
+                @endphp
+                @endif
+                
+                <div class="main__info--comment-index {{ $own }}">
+                    <img class="main__info--comment-img" src="{{ asset($comment->user->profile->image_path) }}" alt="">
+                    <p class="main__info--comment-name">{{ $comment->user->name }}</p>
+                </div>
+                <p class="main__info--comment-txt">{{ $comment->comment }}</p>
             </div>
-            <p class="main__info--comment-txt">赤サタな濱家らわ</p>
+            @endforeach
+            
+            
+            
+            
+            <form class="main__info--form" action="/comment/send" method="post">
+                @csrf
+                <p class="main__info--form-txt">商品へのコメント</p>
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <input type="hidden" name="user_id" value="{{ $auth->id }}">
+                <textarea class="main__info--textarea" name="comment" id="" cols="30" rows="10"></textarea>
+                <button class="main__info--btn">コメントを送信する</button>
+            </form>
         </div>
-        <div class="main__info--comment">
-            <div class="main__info--comment-index">
-                <img class="main__info--comment-img" src="images/italian.jpg" alt="">
-                <p class="main__info--comment-name">名前</p>
-            </div>
-            <p class="main__info--comment-txt">赤サタな濱家らわ</p>
-        </div>
-        <form class="main__info--form" action="" method="">
-            @csrf
-            <p class="main__info--form-txt">商品へのコメント</p>
-            <textarea class="main__info--textarea" name="textarea" id="" cols="30" rows="10"></textarea>
-            <button class="main__info--btn">コメントを送信する</button>
-        </form>
     </div>
-</div>
-
-
-
-@endsection
+    
+    
+    
+    @endsection

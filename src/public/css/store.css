@@ -1,0 +1,118 @@
+.store {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.store__left {
+    width: 60%;
+}
+
+.product {
+    display: flex;
+    margin: 20px;
+}
+
+.product__img {
+    width: 6vw;
+    height: 8vw;
+    object-fit: cover;
+}
+
+.product__txt {
+    margin-left: 30px;
+}
+
+.product__txt--ttl {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.product__txt--price {
+    font-size: 1.2rem;
+}
+
+.pay {
+    position: relative;
+}
+
+.pay__ttl {
+    font-size: 1.6rem;
+}
+
+.pay__btn {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.pay__txt {
+    font-size: 1.2rem;
+}
+
+.delivery {
+    position: relative;
+    margin-top: 50px;
+}
+
+.delivery__ttl {
+    font-size: 1.6rem;
+}
+
+.delivery__btn {
+    background-color: transparent;
+    border: none;
+    color: blue;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.delivery__txt {
+    font-size: 1.2rem;
+}
+
+.store__right {
+    width: 35%;
+}
+
+.info {
+    border: solid #454545;
+    padding: 10px;
+}
+
+.info__ul {
+
+}
+
+.info__li {
+    display: inline-block;
+    font-size: 1.2rem;
+    width: 40%;
+}
+
+.info__li:first-child {
+
+}
+
+.info__li:last-child {
+    margin-left: 30px;
+}
+
+.info__btn {
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 30px;
+    margin-top: 50px;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 3px;
+}

@@ -1,0 +1,140 @@
+.product {
+    width: 60vw;
+    margin: 100px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product__img {
+    width: 24vw;
+    height: 32vw;
+    object-fit: cover;
+}
+
+.product__txt {
+    width: 24vw;
+}
+
+.product__txt--ttl {
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+.product__txt--txt {
+    font-size: 1.4rem;
+    margin-top: -30px;
+}
+
+.product__txt--price {
+    font-size: 1.8rem;
+}
+
+.product__txt--star-comment {
+    display: flex;
+}
+
+.product__txt--star {
+
+}
+
+.product__txt--comment {
+    margin-left: 2vw;
+}
+
+.product__txt--btn {
+    width: 100%;
+    height: 30px;
+    font-size: 1.8rem;
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.product__txt--description-index {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.product__txt--description-txt {
+    font-size: 1.4rem;
+    margin-top: -20px;
+}
+
+.product__txt--info-index {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 50px;
+}
+
+.product__txt--category {
+    display: flex;
+    align-items: flex-start;
+}
+
+.product__txt--category-index {
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 20%;
+}
+
+.product__txt--categories {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 78%;
+}
+
+.product__txt--category-txt {
+    font-size: 1.2rem;
+    height: 18px;
+    background-color: #ccc;
+    border-radius: 9px;
+    padding: 0 10px 0;
+    margin-left: 20px;
+}
+
+.product__txt--tag {
+    display: flex;
+    align-items: center;
+}
+
+.product__txt--tag-index {
+    font-size: 1.4rem;
+    font-weight: bold;
+    width: 20%;
+}
+
+.product__txt--tag-txt {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    width: 78%;
+}
+
+.card__form--icon {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__form--icon-star {
+    font-size: 2rem;
+}
+
+.card__form--icon-chat {
+    font-size: 2rem;
+}
+
+.card__form--icon-txt {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.card__form--icon-star-red {
+    filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
+}
+
+.card__form--icon-star-gray {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(0%) saturate(0%) hue-rotate(194deg) brightness(89%) contrast(97%);
+}

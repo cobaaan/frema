@@ -1,0 +1,14 @@
+html {
+    width: 100%;
+    font-size: 62.5%;
+    background-color: white;
+    color: #454545;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+}

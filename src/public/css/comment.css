@@ -1,0 +1,138 @@
+.main {
+    width: 60vw;
+    margin: 100px auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__img {
+    width: 24vw;
+    height: 32vw;
+    object-fit: cover;
+}
+
+.main__info {
+    width: 24vw;
+}
+
+.main__info--ttl {
+    font-size: 3rem;
+    margin-top: 0;
+}
+
+.main__info--txt {
+    font-size: 1.4rem;
+    margin-top: -30px;
+}
+
+.main__info--price {
+    font-size: 1.8rem;
+}
+
+.main__txt--star-comment {
+    display: flex;
+}
+
+.main__info--favorite-comment {
+    display: flex;
+}
+
+.main__info--favorite-icon {
+
+}
+
+.main__info--comment-icon {
+    margin-left: 2vw;
+}
+
+.main__info--comment {
+    width: 100%;
+}
+
+.main__info--comment-index {
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.main__info--comment-index-right {
+    justify-content: flex-end;
+}
+
+.main__info--comment-img {
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.main__info--comment-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.main__info--comment-txt {
+    width: 100%;
+    background: #ccc;
+    border-radius: 3px;
+    padding: 8px;
+    font-size: 1.4rem;
+    margin: 0;
+}
+
+.main__info--form {
+    margin-top: 50px;
+}
+
+.main__info--form-txt {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.main__info--textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.4rem;
+    border: solid #ccc;
+    border-radius: 5px;
+}
+
+.main__info--btn {
+    width: 100%;
+    height: 30px;
+    font-size: 1.8rem;
+    background-color: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.card__form--icon {
+    border: none;
+    background-color: white;
+    cursor: pointer;
+}
+
+.card__form--icon-star {
+    font-size: 2rem;
+}
+
+.card__form--icon-chat {
+    font-size: 2rem;
+}
+
+.card__form--icon-txt {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.card__form--icon-star-red {
+    filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(358deg) brightness(95%) contrast(112%);
+}
+
+.card__form--icon-star-gray {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(0%) saturate(0%) hue-rotate(194deg) brightness(89%) contrast(97%);
+}

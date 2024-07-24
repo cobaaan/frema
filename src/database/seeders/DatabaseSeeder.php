@@ -7,12 +7,22 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
+    * Seed the application's database.
+    *
+    * @return void
+    */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(UsersTableSeeder::class);
+        $this->call(PaymentsTableSeeder::class);
+        $this->call(ConditionsTableSeeder::class);
+        $this->call(BrandsTableSeeder::class);
+        $this->call(ProductsTableSeeder::class);
+        $this->call(ProfilesTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(ProductCategoryTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
+        $this->call(FavoritesTableSeeder::class);
+        
     }
 }
