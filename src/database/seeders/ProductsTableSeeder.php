@@ -16,7 +16,6 @@ class ProductsTableSeeder extends Seeder
     {
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 1,
             'brand_id' => 1,
             'name' => '家族の肖像',
@@ -27,8 +26,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 4,
             'condition_id' => 1,
             'brand_id' => 1,
             'name' => 'louisVuittonのバッグ',
@@ -39,8 +37,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 7,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'louisVuittonのバッグ',
@@ -52,7 +49,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 3,
             'name' => '飛行機',
@@ -63,8 +59,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 2,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '天使の彫像',
@@ -76,7 +71,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '生魚（鯉）',
@@ -88,7 +82,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '赤い鍋',
@@ -99,8 +92,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 3,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'バッキンガム宮殿に代々伝わる時計',
@@ -111,8 +103,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 3,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'スティーブ・ジョブス愛用のカップ',
@@ -124,10 +115,9 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
-            'name' => '豪華客船　10000人収容可　2024年製',
+            'name' => '豪華客船 10000人収容可 2024年製',
             'image_path' => 'storage/images/ferry_boat.jpg',
             'price' => 999999999,
             'description' => 'ルイヴィトンのバッグです。日本の幼稚園児の持つ通園鞄を見てヴィトンのトップデザイナーがデザインしたバッグです。ノークレームのリターンでお願いします。'
@@ -136,7 +126,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '映画「レオン」でジャン・レノが実際に使用したサングラス',
@@ -148,7 +137,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'メガネ　裸眼で0.1のメガネです',
@@ -159,8 +147,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 3,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'エリック・クラプトン愛用のヴィンテージ・ギター',
@@ -171,8 +158,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 9,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'john carpenterの遺品のギター　ほぼ新品　やや使用感あり',
@@ -183,8 +169,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 9,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '北欧ノルウェー産チェアー',
@@ -196,7 +181,6 @@ class ProductsTableSeeder extends Seeder
         
         $param = [
             'seller_id' => 1,
-            'buyer_id' => 1,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => '革靴　本革　ブラウン',
@@ -207,8 +191,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 3,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'コンバースのバッタもんの靴',
@@ -219,8 +202,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 3,
             'condition_id' => 2,
             'brand_id' => 2,
             'name' => 'パナソニック製の冷蔵庫',
@@ -231,8 +213,7 @@ class ProductsTableSeeder extends Seeder
         DB::table('products')->insert($param);
         
         $param = [
-            'seller_id' => 1,
-            'buyer_id' => 1,
+            'seller_id' => 2,
             'condition_id' => 2,
             'brand_id' => 1,
             'name' => 'テレビのリモコン',

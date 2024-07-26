@@ -30,28 +30,28 @@
 <div class="store">
     <div class="store__left">
         <div class="product">
-            <img class="product__img" src="images/italian.jpg" alt="">
+            <img class="product__img" src="{{ asset($product->image_path) }}" alt="">
             <div class="product__txt">
-                <h2 class="product__txt--ttl">商品名</h2>
-                <p class="product__txt--price">¥47,000</p>
+                <h2 class="product__txt--ttl">{{ $product->name }}</h2>
+                <p class="product__txt--price">¥{{ $product->price }}</p>
             </div>
         </div>
         <div class="pay">
             <h2 class="pay__ttl">支払い方法</h2>
-            <a href="/payment" class="pay__btn">変更する</a>
+            <a href="/profile/payment" class="pay__btn">変更する</a>
             
-            @if($auth->profile->payment_id === 1)
+            @if($auth->profiles->payment_id === 1)
             <p class="pay__txt">クレジットカード</p>
-            @elseif($auth->profile->payment_id === 2)
+            @elseif($auth->profiles->payment_id === 2)
             <p class="pay__txt">コンビニ払い</p>
-            @elseif($auth->profile->payment_id === 3)
+            @elseif($auth->profiles->payment_id === 3)
             <p class="pay__txt">銀行振込</p>
             @endif
         </div>
         <div class="delivery">
             <h2 class="delivery__ttl">配送先</h2>
-            <a href="/address" class="delivery__btn">変更する</a>
-            <p class="delivery__txt">〒{{ $auth->profile->postcode }} {{ $auth->profile->address }} {{ $auth->profile->building }}</p>
+            <a href="/profile/address" class="delivery__btn">変更する</a>
+            <p class="delivery__txt">〒{{ $auth->profiles->postcode }} {{ $auth->profiles->address }} {{ $auth->profiles->building }}</p>
         </div>
     </div>
     
@@ -59,25 +59,28 @@
         <nav class="info">
             <ul class="info__ul">
                 <li class="info__li">商品代金</li>
-                <li class="info__li">¥47,000</li>
+                <li class="info__li">¥{{ $product->price }}</li>
             </ul>
             <ul class="info__ul">
                 <li class="info__li">支払い代金</li>
-                <li class="info__li">¥47,000</li>
+                <li class="info__li">¥{{ $product->price }}</li>
             </ul>
             <ul class="info__ul">
                 <li class="info__li">支払い方法</li>
-                @if($auth->profile->payment_id === 1)
+                @if($auth->profiles->payment_id === 1)
                 <li class="info__li" class="pay__txt">クレジットカード</li>
-                @elseif($auth->profile->payment_id === 2)
+                @elseif($auth->profiles->payment_id === 2)
                 <li class="info__li" class="pay__txt">コンビニ払い</li>
-                @elseif($auth->profile->payment_id === 3)
+                @elseif($auth->profiles->payment_id === 3)
                 <li class="info__li" class="pay__txt">銀行振込</li>
                 @endif
             </ul>
         </nav>
-        <form action="" method="post">
+        <form action="/credit" method="post">
             @csrf
+            <input type="hidden" name="price" value="{{ $product->price }}">
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <input type="hidden" name="buyer_id" value="{{ $product->buyer_id }}">
             <button class="info__btn">購入する</button>
         </form>
     </div>

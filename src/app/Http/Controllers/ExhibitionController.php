@@ -17,7 +17,6 @@ class ExhibitionController extends Controller
 {
     public function exhibition(Request $request) {
         $auth = Auth::user();
-        $products = Product::all();
         
         $conditionId = ExhibitionController::conditionGet($request);
         $brandId = ExhibitionController::brandGet($request);
@@ -48,7 +47,7 @@ class ExhibitionController extends Controller
         }, $categories);
         $product->categories()->sync($categoryIds);
         
-        return view ('top', compact('products'));
+        return redirect('/thanks')->with('message', '商品を出品しました。');
     }
     
     public function categoryGet($request, $newProductId) {

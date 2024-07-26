@@ -34,6 +34,10 @@ class ProfileController extends Controller
         return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
     }
     
+    public function paymentPage() {
+        return view ('payment');
+    }
+    
     public function paymentChange(Request $request) {
         $auth = Auth::user();
         
@@ -43,7 +47,11 @@ class ProfileController extends Controller
         
         Profile::where('user_id', $auth->id)->update($param);
         
-        return view('top');
+        return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
+    }
+    
+    public function addressPage(){
+        return view ('address');
     }
     
     public function addressChange(Request $request) {
@@ -57,6 +65,6 @@ class ProfileController extends Controller
         
         Profile::where('user_id', $auth->id)->update($param);
         
-        return view('top');
+        return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
     }
 }

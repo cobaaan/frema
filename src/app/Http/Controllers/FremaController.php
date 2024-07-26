@@ -8,11 +8,16 @@ use App\Models\Favorite;
 use App\Models\Product;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FremaController extends Controller
 {
     public function top() {
-        $products = Product::all();
+        //$products = Product::all();
+        
+        $products = DB::table('products')
+        ->where('buyer_id', null)
+        ->get();
         
         return view ('top', compact('products'));
     }
@@ -20,11 +25,11 @@ class FremaController extends Controller
     public function thanks() {
         return view ('thanks');
     }
-    
+    /*
     public function paymentPage() {
-        return view ('payment');
+    return view ('payment');
     }
-    
+    */
     public function loginPage(){
         return view ('auth/login');
     }
@@ -37,19 +42,19 @@ class FremaController extends Controller
     public function productPage(){
         return view ('product');
     }
-    
+    /*
     public function storePage(){
-        $auth = Auth::user();
-        
-        return view ('store', compact('auth'));
+    $auth = Auth::user();
+    
+    return view ('store', compact('auth'));
     }
+    */
     
-    
-    
+    /*
     public function addressPage(){
-        return view ('address');
+    return view ('address');
     }
-    
+    */
     /*
     public function commentPage(){
     return view ('comment');
@@ -57,9 +62,19 @@ class FremaController extends Controller
     */
     public function myPage(){
         $auth = Auth::user();
-        $profile = $auth->profile;
+        $profile = $auth->profiles;
         
-        return view ('myPage', compact('auth', 'profile'));
+        $sold = DB::table('products')
+        ->where('seller_id', $auth->id)
+        ->get();
+        
+        $bought = DB::table('products')
+        ->where('buyer_id', $auth->id)
+        ->get();
+        
+        
+        
+        return view ('myPage', compact('auth', 'profile', 'sold', 'bought'));
     }
     
     public function profilePage(){

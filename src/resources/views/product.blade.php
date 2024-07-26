@@ -58,19 +58,11 @@
                     <p class="card__form--icon-txt">{{ count($comments) }}</p>
                 </button>
             </form>
-            {{--
-            <form action="/comment" method="get">
-                @csrf
-                <button class="card__form--icon" formaction="/comment">
-                    <i class="card__form--icon-chat bi bi-chat"></i>
-                    <p class="card__form--icon-txt">{{ count($comments) }}</p>
-                </button>
-            </form>
-            --}}
         </div>
         
-        <form action="" method="">
+        <form action="/store" method="">
             @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
             <button class="product__txt--btn">購入する</button>
         </form>
         <p class="product__txt--description-index">商品説明</p>
