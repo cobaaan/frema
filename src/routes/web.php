@@ -50,7 +50,8 @@ Route::post('/profile/change', [ProfileController::class, 'profileChange']);
 Route::get('/profile/payment', [ProfileController::class, 'paymentPage']);
 Route::post('/profile/payment/change', [ProfileController::class, 'paymentChange']);
 
-Route::get('/profile/address', [ProfileController::class, 'addressPage']);
+//Route::get('/profile/address', [ProfileController::class, 'addressPage']);
+Route::post('/profile/address', [ProfileController::class, 'addressPage']);
 Route::post('/profile/address/change', [ProfileController::class, 'addressChange']);
 
 Route::post('/favorite/{id}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');

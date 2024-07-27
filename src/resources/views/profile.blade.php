@@ -32,7 +32,7 @@
     <form class="main__form" action="/profile/change" method="post" enctype="multipart/form-data">
         @csrf
         <div class="main__file">
-            <img class="main__img" src="{{ asset($auth->profile->image_path) }}" alt="">
+            <img class="main__img" src="{{ asset($auth->profiles->image_path) }}" alt="">
             <label class="main__file--label">
                 画像を選択する
                 <input type="file" name="image_path" accept=".jpg, .jpeg, .png">

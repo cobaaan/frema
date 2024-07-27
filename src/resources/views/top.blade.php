@@ -29,12 +29,12 @@
 
 <nav class="select__nav">
     <ul class="select__nav--ul">
-        <li class="select__nav--li">おすすめ</li>
-        <li class="select__nav--li">マイリスト</li>
+        <li class="select__nav--li" id="product__btn">おすすめ</li>
+        <li class="select__nav--li" id="favorite__btn">マイリスト</li>
     </ul>
 </nav>
 
-<div class="card">
+<div class="card" id="product">
     @foreach ($products as $product)
     <div class="card__content" data-card-name="{{ $product->name }}" data-card-description="{{ $product->description }}">
         <form class="card__content--form" action="/product" method="post">
@@ -48,7 +48,56 @@
     @endforeach
 </div>
 
+@if(isset($favorites))
+<div class="card" id="favorite">
+    @foreach ($favorites as $item)
+    <div class="card__content" data-card-name="{{ $product->name }}" data-card-description="{{ $product->description }}">
+        <form class="card__content--form" action="/product" method="post">
+            @csrf
+            <button class="card__content--form-btn">
+                <input type="hidden" name="product_id" value="{{ $item->id }}">
+                <img class="card__content--form-img" src="{{ asset($item->image_path) }}">
+            </button>
+        </form>
+    </div>
+    @endforeach
+</div>
+@endif
+
 <script>
+    const productBtn = document.querySelector('#product__btn');
+    const favoriteBtn = document.querySelector('#favorite__btn');
+    
+    const product = document.querySelector('#product');
+    const favorite = document.querySelector('#favorite');
+    
+    const showKeyframes = {
+        opacity: [0, 1],
+        display: 'flex',
+    };
+    
+    const hideKeyframes = {
+        opacity: [1, 0],
+        display: 'none',
+    };
+    
+    const options = {
+        duration: 0,
+        easing: 'ease',
+        fill: 'forwards',
+    };
+    
+    productBtn.addEventListener('click', () => {
+        product.animate(showKeyframes, options);
+        favorite.animate(hideKeyframes, options);
+    });
+    
+    favoriteBtn.addEventListener('click', () => {
+        product.animate(hideKeyframes, options);
+        favorite.animate(showKeyframes, options);
+    });
+    
+    
     document.addEventListener('DOMContentLoaded', function() {
         const searchText = document.getElementById('searchText');
         const cards = document.querySelectorAll('.card__content');

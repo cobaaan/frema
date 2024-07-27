@@ -24,6 +24,10 @@
     justify-content: flex-start;
 }
 
+#favorite {
+    display: none;
+}
+
 .card__content {
     width: 11vw;
     height: 11vw;

@@ -50,6 +50,7 @@
         </div>
         <div class="delivery">
             <h2 class="delivery__ttl">配送先</h2>
+            <form action="/profile/address" method="post"></form>
             <a href="/profile/address" class="delivery__btn">変更する</a>
             <p class="delivery__txt">〒{{ $auth->profiles->postcode }} {{ $auth->profiles->address }} {{ $auth->profiles->building }}</p>
         </div>
