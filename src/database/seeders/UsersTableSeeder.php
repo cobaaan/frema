@@ -25,6 +25,14 @@ class UsersTableSeeder extends Seeder
         ];
         DB::table('users')->insert($param);
         
-        User::factory()->count(20)->create();
+        $param = [
+            'name' => 'ポール',
+            'email' => 'paul@beatles.example',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+        ];
+        DB::table('users')->insert($param);
+        
+        User::factory()->count(18)->create();
     }
 }

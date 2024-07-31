@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
@@ -41,6 +43,20 @@ class FortifyServiceProvider extends ServiceProvider
             $email = (string) $request->email;
             
             return Limit::perMinute(10)->by($email . $request->ip());
+        });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $credentials = $request->only('email', 'password');
+            
+            if (Auth::guard('web')->attempt($credentials)) {
+                return Auth::guard('web')->user();
+            }
+            
+            if (Auth::guard('admin')->attempt($credentials)) {
+                return Auth::guard('admin')->user();
+            }
+            
+            return null;
         });
     }
 }

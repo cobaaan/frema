@@ -11,12 +11,12 @@
         @csrf
         <nav class="header__nav">
             <ul class="header__nav--ul">
-                <li class="header__nav--li"><a href="/"><img src="images/logo.svg" alt=""></a></li>
-                <li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>
+                <li class="header__nav--li"><a href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a></li>
+                {{--<li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>--}}
                 <li class="header__nav--li">
                     @auth
                     <button class="header__nav--li-btn">ログアウト</button>
-                    <a class="header__nav--li-btn" href="/my_page">マイページ</a>
+                    <a class="header__nav--li-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="product">
-    <img class="product__img" src="{{ $product->image_path }}" alt="">
+    <img class="product__img" src="{{ asset($product->image_path) }}" alt="">
     
     <div class="product__txt">
         <h2 class="product__txt--ttl">{{ $product->name }}</h2>
@@ -53,14 +53,27 @@
                     <i class="card__form--icon-star bi bi-star {{ $color }}"></i>
                     <p class="card__form--icon-txt">{{ count($favorites) }}</p>
                 </button>
+                {{--}}
                 <button class="card__form--icon" formaction="/comment">
+                    <i class="card__form--icon-chat bi bi-chat"></i>
+                    <p class="card__form--icon-txt">{{ count($comments) }}</p>
+                </button>
+                --}}
+                <button class="card__form--icon" formaction="{{ route('comment.page', $product->id) }}">
                     <i class="card__form--icon-chat bi bi-chat"></i>
                     <p class="card__form--icon-txt">{{ count($comments) }}</p>
                 </button>
             </form>
         </div>
         
-        <form action="/store" method="">
+        
+        {{--<a class="header__nav--li-btn"  href="{{ route('store.page', ['id' => $product->id]) }}" color="black">購入する</a>--}}
+        <a class="header__nav--li-btn"  href="{{ route('store.page', ['id' => $product->id]) }}" color="black">購入する</a>
+        
+        
+        
+        
+        <form action="{{ route('store.page', ['id' => $product->id]) }}" method="">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product->id }}">
             <button class="product__txt--btn">購入する</button>

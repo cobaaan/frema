@@ -10,12 +10,12 @@
         @csrf
         <nav class="header__nav">
             <ul class="header__nav--ul">
-                <li class="header__nav--li"><a href="/"><img src="images/logo.svg" alt=""></a></li>
-                <li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>
+                <li class="header__nav--li"><a href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a></li>
+                {{--<li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>--}}
                 <li class="header__nav--li">
                     @auth
                     <button class="header__nav--li-btn">ログアウト</button>
-                    <a class="header__nav--li-btn" href="/my_page">マイページ</a>
+                    <a class="header__nav--li-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
@@ -38,7 +38,12 @@
         </div>
         <div class="pay">
             <h2 class="pay__ttl">支払い方法</h2>
-            <a href="/profile/payment" class="pay__btn">変更する</a>
+            
+            <form action="/profile/payment" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="delivery__btn">変更する</button>
+            </form>
             
             @if($auth->profiles->payment_id === 1)
             <p class="pay__txt">クレジットカード</p>
@@ -50,8 +55,11 @@
         </div>
         <div class="delivery">
             <h2 class="delivery__ttl">配送先</h2>
-            <form action="/profile/address" method="post"></form>
-            <a href="/profile/address" class="delivery__btn">変更する</a>
+            <form action="/profile/address" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                <button class="delivery__btn">変更する</button>
+            </form>
             <p class="delivery__txt">〒{{ $auth->profiles->postcode }} {{ $auth->profiles->address }} {{ $auth->profiles->building }}</p>
         </div>
     </div>

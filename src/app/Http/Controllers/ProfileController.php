@@ -11,6 +11,12 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    public function profilePage(){
+        $auth = Auth::user();
+        
+        return view ('profile', compact('auth'));
+    }
+    
     public function profileChange(Request $request) {
         $auth = Auth::user();
         
@@ -31,11 +37,14 @@ class ProfileController extends Controller
         User::where('id', $auth->id)->update($name);
         Profile::where('user_id', $auth->id)->update($param);
         
-        return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
+        return redirect('/thanks')
+        ->with('message', 'プロフィールが変更されました。')
+        ->with('address', route('my.page', ['id' => $auth->id]))
+        ->with('page', 'マイページ');
     }
     
-    public function paymentPage() {
-        return view ('payment');
+    public function paymentPage(Request $request) {
+        return view ('payment', compact('request'));
     }
     
     public function paymentChange(Request $request) {
@@ -47,11 +56,14 @@ class ProfileController extends Controller
         
         Profile::where('user_id', $auth->id)->update($param);
         
-        return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
+        return redirect('/thanks')
+        ->with('message', '支払い方法が変更されました。')
+        ->with('address', route('store.page', ['id' => $request->product_id]))
+        ->with('page', '購入ページ');
     }
     
-    public function addressPage(){
-        return view ('address');
+    public function addressPage(Request $request){
+        return view ('address', compact('request'));
     }
     
     public function addressChange(Request $request) {
@@ -65,6 +77,10 @@ class ProfileController extends Controller
         
         Profile::where('user_id', $auth->id)->update($param);
         
-        return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
+        //return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
+        return redirect('/thanks')
+        ->with('message', '住所が変更されました。')
+        ->with('address', route('store.page', ['id' => $request->product_id]))
+        ->with('page', '購入ページ');
     }
 }

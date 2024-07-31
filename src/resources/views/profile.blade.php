@@ -11,11 +11,11 @@
         <nav class="header__nav">
             <ul class="header__nav--ul">
                 <li class="header__nav--li"><a href="/"><img src="images/logo.svg" alt=""></a></li>
-                <li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>
+                {{--<li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>--}}
                 <li class="header__nav--li">
                     @auth
                     <button class="header__nav--li-btn">ログアウト</button>
-                    <a class="header__nav--li-btn" href="/my_page">マイページ</a>
+                    <a class="header__nav--li-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
@@ -37,7 +37,7 @@
                 画像を選択する
                 <input type="file" name="image_path" accept=".jpg, .jpeg, .png">
             </label>
-            <p class="main__file--txt"></p>
+            <p class="main__file--txt">画像を選択してください</p>
         </div>
         <p class="main__index">ユーザー名</p>
         <input class="main__input" type="text" name="name">
@@ -50,6 +50,7 @@
         <button class="main__btn">更新する</button>
     </form>
 </div>
+
 <script>
     $(document).ready(function() {
         $('.main__file--label input[type=file]').on('change', function () {
@@ -57,7 +58,7 @@
             if (file) {
                 $('.main__file--txt').text(file.name);
             } else {
-                $('.main__file--txt').text('');
+                $('.main__file--txt').text('画像を選択してください');
             }
         });
     });

@@ -15,6 +15,8 @@
         <input class="address__input" type="text" name="address">
         <h2 class="address__index">建物名</h2>
         <input class="address__input" type="text" name="building">
+        
+        <input type="hidden" name="product_id" value="{{ $request->product_id }}">
         <button class="address__btn">更新する</button>
     </form>
 </div>

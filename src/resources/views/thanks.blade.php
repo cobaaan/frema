@@ -9,7 +9,7 @@
     @if(session('message'))
     <h2 class="content__ttl">{{ session('message') }}</h2>
     @endif
-    <a class="content__a" href="/">トップページ</a>
+    <a class="content__a" href="{{ session('address') }}">{{ session('page') }}</a>
 </div>
 
 

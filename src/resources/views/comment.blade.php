@@ -11,12 +11,12 @@
         @csrf
         <nav class="header__nav">
             <ul class="header__nav--ul">
-                <li class="header__nav--li"><a href="/"><img src="images/logo.svg" alt=""></a></li>
-                <li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>
+                <li class="header__nav--li"><a href="/"><img src="{{ asset('images/logo.svg')}} " alt=""></a></li>
+                {{--<li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder=" 何をお探しですか？"></li>--}}
                 <li class="header__nav--li">
                     @auth
                     <button class="header__nav--li-btn">ログアウト</button>
-                    <a class="header__nav--li-btn" href="/my_page">マイページ</a>
+                    <a class="header__nav--li-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
@@ -29,7 +29,7 @@
 </div>
 
 <div class="main">
-    <img class="main__img" src="{{ $product->image_path }}" alt="">
+    <img class="main__img" src="{{ asset($product->image_path) }}" alt="">
     
     <div class="main__info">
         <div class="main__info">
@@ -54,7 +54,13 @@
                         <i class="card__form--icon-star bi bi-star {{ $color }}"></i>
                         <p class="card__form--icon-txt">{{ count($favorites) }}</p>
                     </button>
+                    {{--}}
                     <button class="card__form--icon" formaction="/comment">
+                        <i class="card__form--icon-chat bi bi-chat"></i>
+                        <p class="card__form--icon-txt">{{ count($comments) }}</p>
+                    </button>
+                    --}}
+                    <button class="card__form--icon" formaction="{{ route('comment.page', $product->id) }}">
                         <i class="card__form--icon-chat bi bi-chat"></i>
                         <p class="card__form--icon-txt">{{ count($comments) }}</p>
                     </button>
@@ -74,7 +80,7 @@
                 @endif
                 
                 <div class="main__info--comment-index {{ $own }}">
-                    <img class="main__info--comment-img" src="{{ asset($comment->user->profile->image_path) }}" alt="">
+                    <img class="main__info--comment-img" src="{{ asset($comment->user->profiles->image_path) }}" alt="">
                     <p class="main__info--comment-name">{{ $comment->user->name }}</p>
                 </div>
                 <p class="main__info--comment-txt">{{ $comment->comment }}</p>

@@ -27,10 +27,10 @@ class ProfilesTableSeeder extends Seeder
         $param = [
             'user_id' => 2,
             'payment_id' => 1,
-            'image_path' => 'storage/images/pot.jpg',
+            'image_path' => 'storage/images/paul.jpg',
             'postcode' => '1006390',
-            'address' => '東京都千代田区丸の内1-8-3',
-            'building' => '丸の内トラストタワー本館22階',
+            'address' => 'イギリス ロンドン 3-7-1',
+            'building' => 'アップルスタジオ',
         ];
         DB::table('profiles')->insert($param);
         

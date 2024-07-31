@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExhibitionController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\FremaController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
@@ -22,32 +24,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [FremaController::class, 'top']);
+Route::get('/', [FremaController::class, 'top'])->name('/');
 Route::get('/thanks', [FremaController::class, 'thanks']);
 Route::get('/register', [FremaController::class, 'registerPage']);
 Route::get('/login', [FremaController::class, 'loginPage']);
+Route::post('/logout', [FremaController::class, 'logout'])->name('logout');
 
 Route::post('/product', [ProductController::class, 'productPage']);
-Route::get('/product', [ProductController::class, 'productPage']);
+Route::get('/product/{id}', [ProductController::class, 'productPage'])->name('product.page');
 
-Route::get('/store', [StoreController::class, 'storePage']);
-Route::post('/store', [StoreController::class, 'storePage']);
+Route::get('/store/{id}', [StoreController::class, 'storePage'])->name('store.page');
+Route::post('/store/{id}', [StoreController::class, 'storePage'])->name('store.page');
 
 
-Route::get('/comment', [CommentController::class, 'commentPage']);
-Route::post('/comment', [CommentController::class, 'commentPage']);
+
+Route::get('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
+Route::post('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
+
+//Route::get('/comment', [CommentController::class, 'commentPage']);
+//Route::post('/comment', [CommentController::class, 'commentPage']);
 Route::post('/comment/send', [CommentController::class, 'commentSend']);
 
-Route::get('/my_page', [FremaController::class, 'myPage']);
+Route::get('/my/page{id}', [FremaController::class, 'myPage'])->name('my.page');
+//Route::get('/my/page{id}', [FremaController::class, 'myPage']);
 
-Route::get('/profile', [FremaController::class, 'profilePage']);
+//Route::get('/profile', [FremaController::class, 'profilePage']);
 
 Route::get('/exhibition', [FremaController::class, 'exhibitionPage']);
 Route::post('/exhibition', [ExhibitionController::class, 'exhibition']);
 
+Route::get('/profile{id}', [ProfileController::class, 'profilePage'])->name('profile.page');
+
 Route::post('/profile/change', [ProfileController::class, 'profileChange']);
 
-Route::get('/profile/payment', [ProfileController::class, 'paymentPage']);
+Route::post('/profile/payment', [ProfileController::class, 'paymentPage']);
 Route::post('/profile/payment/change', [ProfileController::class, 'paymentChange']);
 
 //Route::get('/profile/address', [ProfileController::class, 'addressPage']);
@@ -74,3 +84,15 @@ Route::prefix('payment')->name('payment.')->group(function () {
 
 //Route::post('/create-payment-intent', 'PaymentController@paymentConvenience');
 Route::post('/create-payment-intent', [PaymentController::class, 'paymentConvenience']);
+
+
+Route::get('/admin/user', [AdminController::class, 'userListPage'])->name('user.list.page');
+Route::post('/admin/user/delete', [AdminController::class, 'userDelete']);
+
+Route::get('/admin/comment', [AdminController::class, 'commentListPage'])->name('comment.list.page');
+Route::post('/admin/comment/delete', [AdminController::class, 'commentDelete']);
+
+Route::get('/mail', [MailController::class, 'mailForm'])->name('mail.form');
+Route::post('/mail/send', [MailController::class, 'mailSend']);
+
+Route::post('/login', [FremaController::class, 'login']);

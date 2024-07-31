@@ -15,6 +15,7 @@
             <option value="2">コンビニ払い</option>
             <option value="3">銀行振込</option>
         </select>
+        <input type="hidden" name="product_id" value="{{ $request->product_id }}">
         <button class="main__btn">更新する</button>
     </form>
 </div>

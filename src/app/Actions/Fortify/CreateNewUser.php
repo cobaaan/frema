@@ -37,9 +37,9 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
-                $user->profile()->create([
+                $user->profiles()->create([
                     'payment_id' => 1,
-                    'image_path' => 'storage/images/user.jpeg'
+                    'image_path' => 'storage/images/user.jpg'
                 ]);
             });
         }

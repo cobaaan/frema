@@ -19,7 +19,10 @@ class PaymentController extends Controller
 {
     public function payment() {
         
-        return redirect('/thanks')->with('message', 'ご購入ありがとうございました。');
+        return redirect('/thanks')
+        ->with('message', 'ご購入ありがとうございました。')
+        ->with('address', '/')
+        ->with('page', 'トップページ');
     }
     
     public function credit(Request $request) {
@@ -61,7 +64,10 @@ class PaymentController extends Controller
             $buyer = Product::where('id', $request->product_id)
             ->update($param);
             
-            return redirect('/thanks')->with('message', 'ご購入ありがとうございました。');
+            return redirect('/thanks')
+            ->with('message', 'ご購入ありがとうございました。')
+            ->with('address', '/')
+            ->with('page', 'トップページ');
         }
         else {
             return back()->with('flash_alert', '先に購入された方がいるようです。この商品はお買い求めいただけません。');

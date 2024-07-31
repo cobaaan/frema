@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class StoreController extends Controller
 {
-    public function storePage(Request $request){
+    public function storePage(Request $request, $id){
         $auth = Auth::user();
         
         $product = Product::all()
-        ->where('id', $request->product_id)
+        ->where('id', $id)
         ->first();
         
         return view ('store', compact('auth', 'product'));

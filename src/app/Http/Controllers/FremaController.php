@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Models\Admin;
 use App\Models\Favorite;
 use App\Models\Product;
 
@@ -14,23 +15,28 @@ class FremaController extends Controller
 {
     public function top() {
         $auth = Auth::user();
-        
+        //$admin = Auth::admin();
+        //dd($admin);
         $products = DB::table('products')
         ->where('buyer_id', null)
         ->get();
-        /*
-        $favorites = DB::table('favorites')
-        ->where('user_id', $auth->id)
-        ->get();
-        */
-        //$favorites = Favorite::where('user_id', $auth->id)->get();
-        //dd($favorites);
+        
+        //$favoriteProductIds = $auth->favoriteProducts()->pluck('product_id')->toArray();
+        
         if(isset($auth)){
+            $favoriteProductIds = $auth->favoriteProducts()->pluck('product_id')->toArray();
+            
             $favorites = $auth->favoriteProducts()->get();
-            //dd($favorites);
-            return view ('top', compact('products', 'favorites'));
+            return view ('top', compact('auth', 'products', 'favorites', 'favoriteProductIds'));
         }
-        return view ('top', compact('products'));
+        
+        else {
+            $favoriteProductIds = null;
+            
+            $favorites = null;
+            return view ('top', compact('auth', 'products', 'favorites', 'favoriteProductIds'));
+        }
+        //return view ('top', compact('products'));
     }
     
     public function thanks() {
@@ -49,10 +55,11 @@ class FremaController extends Controller
         return view ('auth/register');
     }
     
-    
+    /*
     public function productPage(){
-        return view ('product');
+    return view ('product');
     }
+    */
     /*
     public function storePage(){
     $auth = Auth::user();
@@ -74,7 +81,13 @@ class FremaController extends Controller
     public function myPage(){
         $auth = Auth::user();
         $profile = $auth->profiles;
-        
+        $products = Product::all();
+        /*
+        $products = DB::table('products')
+        ->where('buyer_id', null)
+        ->get();
+        */
+        /*
         $sold = DB::table('products')
         ->where('seller_id', $auth->id)
         ->get();
@@ -82,21 +95,53 @@ class FremaController extends Controller
         $bought = DB::table('products')
         ->where('buyer_id', $auth->id)
         ->get();
+        */
         
         
-        
-        return view ('myPage', compact('auth', 'profile', 'sold', 'bought'));
+        return view ('myPage', compact('auth', 'profile', 'products'));
+        //return view ('myPage', compact('auth', 'profile', 'sold', 'bought'));
     }
-    
+    /*
     public function profilePage(){
-        $auth = Auth::user();
-        
-        return view ('profile', compact('auth'));
-    }
+    $auth = Auth::user();
     
+    return view ('profile', compact('auth'));
+    }
+    */
     public function exhibitionPage(){
         $auth = Auth::user();
         
         return view ('exhibition', compact('auth'));
+    }
+    
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+        
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->route('/');
+        }
+        
+        if (Auth::guard('admin')->attempt($credentials)) {
+            return redirect()->route('/');
+        }
+        
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+    
+    public function logout(Request $request)
+    {
+        if (Auth::guard('admin')->check()) {
+            Auth::guard('admin')->logout();
+        } elseif (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
+        
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        
+        return redirect('/');
     }
 }

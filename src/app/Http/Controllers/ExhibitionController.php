@@ -47,7 +47,10 @@ class ExhibitionController extends Controller
         }, $categories);
         $product->categories()->sync($categoryIds);
         
-        return redirect('/thanks')->with('message', '商品を出品しました。');
+        return redirect('/thanks')
+        ->with('message', '商品を出品しました。')
+        ->with('address', '/')
+        ->with('page', 'トップページ');
     }
     
     public function categoryGet($request, $newProductId) {
