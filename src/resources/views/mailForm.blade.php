@@ -12,14 +12,22 @@
             <li class="header__nav--li">
                 <form class="header__form" action="/logout" method="post">
                     @csrf
-                    @auth
+                    @if (Auth::guard('admin')->check())
+                    <button class="header__nav--li-btn">ログアウト</button>
+                    <a class="header__nav--li-btn" href="/admin/user">ユーザー 一覧</a>
+                    <a class="header__nav--li-btn" href="/admin/comment">コメント 一覧</a>
+                    <a class="header__nav--li-btn" href="/mail">メール</a>
+                    
+                    @elseif (Auth::check())
                     <button class="header__nav--li-btn">ログアウト</button>
                     <a class="header__nav--li-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
+                    <a class="header__nav--li-btn-black" href="/exhibition">出品</a>
+                    
                     @else
                     <a class="header__nav--li-btn" href="/login">ログイン</a>
                     <a class="header__nav--li-btn" href="/register">会員登録</a>
-                    @endauth
                     <a class="header__nav--li-btn-black" href="/exhibition">出品</a>
+                    @endif
                 </form>
             </li>
         </ul>
