@@ -6,25 +6,31 @@
 
 @section('content')
 <div class="header">
-    <nav class="header__nav">
-        <ul class="header__nav--ul">
-            <li class="header__nav--li"><a href="/"><img src="{{ asset('images/logo.svg') }}" alt=""></a></li>
-            <li class="header__nav--li"><input class="header__nav--li-txt" id="searchText" type="text" name="text" placeholder="何をお探しですか？"></li>
-            <li class="header__nav--li">
-                <form class="header__form" action="/logout" method="post">
-                    @csrf
-                    @auth
-                    <button class="header__nav--li-btn">ログアウト</button>
-                    <a class="header__nav--li-btn" href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
-                    @else
-                    <a class="header__nav--li-btn" href="/login">ログイン</a>
-                    <a class="header__nav--li-btn" href="/register">会員登録</a>
-                    @endauth
-                    <a class="header__nav--li-btn-black" href="/exhibition">出品</a>
-                </form>
-            </li>
-        </ul>
-    </nav>
+    <ul class="header__list">
+        <li class="header__list--item"><a href="/" id="logo"><img class="logo" src="{{ asset('images/logo.svg') }}" alt=""></a></li>
+        <li class="header__list--item"><input class="header__list--item-search" id="searchText" type="text" name="text" placeholder="何をお探しですか？"></li>
+        <li class="header__list--item">
+            <form class="header__list--item-form" action="/logout" method="post">
+                @csrf
+                @if (Auth::guard('admin')->check())
+                <button class="header__list--item-btn">ログアウト</button>
+                <a class="header__list--item-btn" href="/admin/user">ユーザー 一覧</a>
+                <a class="header__list--item-btn" href="/admin/comment">コメント 一覧</a>
+                <a class="header__list--item-btn" href="/mail">メール</a>
+                
+                @elseif (Auth::check())
+                <button class="header__list--item-btn">ログアウト</button>
+                <a class="header__list--item-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
+                <a class="header__list--item-btn-black" href="/exhibition">出品</a>
+                
+                @else
+                <a class="header__list--item-btn" href="/login">ログイン</a>
+                <a class="header__list--item-btn" href="/register">会員登録</a>
+                <a class="header__list--item-btn-black" href="/exhibition">出品</a>
+                @endif
+            </form>
+        </li>
+    </ul>
 </div>
 
 <div class="profile">
@@ -33,10 +39,10 @@
     <a class="profile__btn" href="{{ route('profile.page', ['id' => $auth->id]) }}">プロフィールを編集</a>
 </div>
 
-<nav class="select__nav">
-    <ul class="select__nav--list">
-        <li class="select__nav--item" id="sold__btn">出品した商品</li>
-        <li class="select__nav--item" id="bought__btn">購入した商品</li>
+<nav class="select">
+    <ul class="select__list">
+        <li class="select__list--item" id="sold__btn">出品した商品</li>
+        <li class="select__list--item" id="bought__btn">購入した商品</li>
     </ul>
 </nav>
 

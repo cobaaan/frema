@@ -17,34 +17,12 @@ class ProductController extends Controller
 {
     public function productPage(Request $request, $id){
         $auth = Auth::user();
-        /*
-        $productId = session('product_id', $request->product_id);
-        $product = Product::find($productId);
-        */
+        
         $product = Product::find($id);
         
         $categories = $product->categories;
         
-        /*
         $comments = DB::table('comments')
-        ->where('product_id', $productId)
-        ->get();
-        
-        $favorite = DB::table('favorites')
-        ->where('user_id', $auth->id)
-        ->where('product_id', $productId)
-        ->get();
-        
-        $favorites = DB::table('favorites')
-        ->where('product_id', $productId)
-        ->get();
-        */
-        $comments = DB::table('comments')
-        ->where('product_id', $id)
-        ->get();
-        
-        $favorite = DB::table('favorites')
-        ->where('user_id', $auth->id)
         ->where('product_id', $id)
         ->get();
         
@@ -61,9 +39,18 @@ class ProductController extends Controller
         ->where('id', $product->brand_id)
         ->first();
         
-        //session()->forget('product_id');
-        
-        //dd($favorites);
+        if(isset($auth)){
+            $favorite = DB::table('favorites')
+            ->where('user_id', $auth->id)
+            ->where('product_id', $id)
+            ->get();
+        } else {
+            
+            $favorite = DB::table('favorites')
+            ->where('user_id', -1)
+            ->where('product_id', $id)
+            ->get();
+        }
         
         return view ('product', compact('auth', 'product', 'categories', 'condition', 'brand', 'favorite', 'comments', 'favorites'));
     }

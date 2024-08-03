@@ -36,8 +36,16 @@
     font-size: 1.5rem;
 }
 
-.content__a {
+.content__login--link {
     display: block;
     margin-top: 20px;
     font-size: 1.2rem;
+}
+
+
+
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+    }
 }

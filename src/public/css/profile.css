@@ -13,8 +13,8 @@
 }
 
 .main__img {
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
     border-radius: 50px;
     object-fit: cover;
 }
@@ -76,4 +76,26 @@ input[type=file] {
     border: none;
     border-radius: 5px;
     margin: 30px 0 50px;
+}
+
+
+
+@media (max-width: 768px) {
+    .main {
+        width: 90%;
+    }
+
+.main__file--label {
+    top: 40%;
+    left: 120px;
+    transform: translate(0%, -50%);
+}
+
+    .main__file--txt {
+    font-size: 1.4rem;
+    position: absolute;
+    top: 65%;
+    left: 120px;
+    transform: translate(0%, -50%);
+    }
 }

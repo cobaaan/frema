@@ -8,11 +8,7 @@
     text-align: center;
 }
 
-.main__form {
-
-}
-
-.main__form--ttl {
+.main__subtitle {
     font-size: 1.6rem;
     font-weight: bold;
     margin: 0;
@@ -91,4 +87,14 @@ input[type=file] {
 
 
 
+@media (max-width: 768px) {
+    .main {
+        width: 90%;
+    }
 
+    .main__file--txt {
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

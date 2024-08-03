@@ -1,7 +1,7 @@
 @extends('layouts/logo')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/register.css') }}" />
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
         <input type="hidden" name="name" id="name">
         <button class="content__btn" type="submit">登録する</button>
     </form>
-    <a class="content__a" href="/login">ログインはこちら</a>
+    <a class="content__login--link" href="/login">ログインはこちら</a>
 </div>
 
 <script>

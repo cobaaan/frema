@@ -11,9 +11,9 @@
 <div class="main">
     <h2 class="main__ttl">商品の出品</h2>
     
-    <form class="main__form" action="/exhibition" method="post" enctype="multipart/form-data">
+    <form action="/exhibition" method="post" enctype="multipart/form-data">
         @csrf
-        <p class="main__form--ttl">商品画像</p>
+        <p class="main__subtitle">商品画像</p>
         <div class="main__file">
             <label class="main__file--label">
                 画像を選択する
@@ -23,21 +23,21 @@
         </div>
         
         <h2 class="main__index">商品の詳細</h2>
-        <p class="main__form--ttl">カテゴリー</p>
+        <p class="main__subtitle">カテゴリー</p>
         <input name='tags' class='main__input' autofocus>
-        <p class="main__form--ttl">商品の状態</p>
+        <p class="main__subtitle">商品の状態</p>
         <input class="main__input" type="text" name="condition">
         
         <h2 class="main__index">商品名と説明</h2>
-        <p class="main__form--ttl">商品名</p>
+        <p class="main__subtitle">商品名</p>
         <input class="main__input" type="text" name="name">
-        <p class="main__form--ttl">ブランド名</p>
+        <p class="main__subtitle">ブランド名</p>
         <input class="main__input" type="text" name="brand">
-        <p class="main__form--ttl">商品の説明</p>
+        <p class="main__subtitle">商品の説明</p>
         <textarea class="main__form--textarea" name="description" id="" cols="30" rows="10"></textarea>
         
         <h2 class="main__index">販売価格</h2>
-        <p class="main__form--ttl">販売価格</p>
+        <p class="main__subtitle">販売価格</p>
         <input class="main__input" type="number" name="price" step="1" placeholder="¥">
         @auth
         <input type="hidden" name="seller_id" value="{{ $auth->id }}">
@@ -63,34 +63,28 @@
     
     
     var input = document.querySelector('input[name=tags]'),
-    // init Tagify script on the above inputs
     tagify = new Tagify(input, {
         whitelist : ["A# .NET", "A# (Axiom)"],
         blacklist : ["react", "angular"]
     });
     
-    // "remove all tags" button event listener
     document.querySelector('.tags--removeAllBtn')
     .addEventListener('click', tagify.removeAllTags.bind(tagify))
     
-    // Chainable event listeners
     tagify.on('add', onAddTag)
     .on('remove', onRemoveTag)
     .on('invalid', onInvalidTag);
     
-    // tag added callback
     function onAddTag(e){
         console.log(e, e.detail);
         console.log( tagify.DOM.originalInput.value )
-        tagify.off('add', onAddTag) // exmaple of removing a custom Tagify event
+        tagify.off('add', onAddTag)
     }
     
-    // tag remvoed callback
     function onRemoveTag(e){
         console.log(e, e.detail);
     }
     
-    // invalid tag added callback
     function onInvalidTag(e){
         console.log(e, e.detail);
     }

@@ -16,36 +16,36 @@ use Illuminate\Support\Facades\DB;
 class CommentController extends Controller
 {
     public function commentPage(Request $request, $id){
-        $auth = Auth::user();
         
-        //$productId = session('product_id', $request->product_id);
-        //$product = Product::find($productId);
+        $auth = Auth::user();
         
         $product = Product::find($id);
         
         $categories = $product->categories;
         $comments = Comment::where('product_id', $id)->get();
         
-        $favorite = DB::table('favorites')
-        ->where('user_id', $auth->id)
-        ->where('product_id', $id)
-        ->get();
-        
-        $favorites = DB::table('favorites')
-        ->where('product_id', $id)
-        ->get();
+        if(isset($auth)){
+            $favorite = DB::table('favorites')
+            ->where('user_id', $auth->id)
+            ->where('product_id', $id)
+            ->get();
+        } else {
+            
+            $favorite = DB::table('favorites')
+            ->where('user_id', -1)
+            ->where('product_id', $id)
+            ->get();
+        }
         /*
-        $comments = Comment::where('product_id', $productId)->get();
-        
         $favorite = DB::table('favorites')
         ->where('user_id', $auth->id)
-        ->where('product_id', $productId)
-        ->get();
-        
-        $favorites = DB::table('favorites')
-        ->where('product_id', $productId)
+        ->where('product_id', $id)
         ->get();
         */
+        $favorites = DB::table('favorites')
+        ->where('product_id', $id)
+        ->get();
+        
         $condition = DB::table('conditions')
         ->where('id', $product->condition_id)
         ->first();
@@ -53,8 +53,6 @@ class CommentController extends Controller
         $brand = DB::table('brands')
         ->where('id', $product->brand_id)
         ->first();
-        
-        //session()->forget('product_id');
         
         return view ('comment', compact('auth', 'product', 'categories', 'condition', 'brand', 'favorite', 'comments', 'favorites'));
     }

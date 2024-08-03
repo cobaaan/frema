@@ -1,18 +1,18 @@
 .main {
-    width: 60vw;
+    width: 75vw;
     margin: 100px auto;
     display: flex;
     justify-content: space-between;
 }
 
 .main__img {
-    width: 24vw;
-    height: 32vw;
+    width: 30vw;
+    height: 40vw;
     object-fit: cover;
 }
 
 .main__info {
-    width: 24vw;
+    width: 30vw;
 }
 
 .main__info--ttl {
@@ -135,4 +135,23 @@
 
 .card__form--icon-star-gray {
     filter: brightness(0) saturate(100%) invert(84%) sepia(0%) saturate(0%) hue-rotate(194deg) brightness(89%) contrast(97%);
+}
+
+
+
+@media (max-width: 768px) {
+    .main {
+        width: 92vw;
+        margin: 30px auto;
+        display: inherit;
+    }
+
+    .main__img {
+        width: 92vw;
+        height: 69vw;
+    }
+
+    .main__info {
+        width: 92vw;
+    }
 }

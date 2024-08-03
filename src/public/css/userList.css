@@ -27,6 +27,9 @@
     border-bottom: solid;
     padding-bottom: 5px;
     font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main__list--item {
@@ -87,10 +90,6 @@
     font-size: 1.5rem;
 }
 
-.modal__form {
-
-}
-
 .modal__buttons {
     display: flex;
     justify-content: center;
@@ -129,4 +128,45 @@
     height: 100%;
     background: rgba(0,0,0,0.5);
     z-index: 999;
+}
+
+
+
+@media (max-width: 768px) {
+    .main {
+        width: 90%;
+    }
+
+    .main__ttl {
+        font-size: 2rem;
+    }
+
+    .main__list--index {
+        font-size: 1.5rem;
+    }
+
+    .main__list {
+        font-size: 1.2rem;
+    }
+
+    .txt__id {
+        width: 6%;
+        margin-left: -50px;
+    }
+
+    .txt__name {
+        width: 18%;
+    }
+
+    .txt__email {
+        width: 60%;
+    }
+
+    .txt__btn {
+        width: 20%;
+    }
+
+    .modal {
+        width: 90%;
+    }
 }

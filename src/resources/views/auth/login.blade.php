@@ -16,7 +16,7 @@
         <br>
         <button class="content__btn">ログインする</button>
     </form>
-    <a class="content__a" href="/register">会員登録はこちら</a>
+    <a class="content__register--link" href="/register">会員登録はこちら</a>
 </div>
 
 

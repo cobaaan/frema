@@ -108,12 +108,13 @@ class FremaController extends Controller
     return view ('profile', compact('auth'));
     }
     */
+    /*
     public function exhibitionPage(){
-        $auth = Auth::user();
-        
-        return view ('exhibition', compact('auth'));
-    }
+    $auth = Auth::user();
     
+    return view ('exhibition', compact('auth'));
+    }
+    */
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');

@@ -12,7 +12,7 @@
     <title>coachtechフリマ</title>
 </head>
 <div class="header">
-    <a class="header__logo" href="/"><img src="images/logo.svg" alt=""></a>
+    <a class="header__logo" href="/" id="logo"><img class="header__logo--img" src="{{ asset('images/logo.svg') }}" alt=""></a>
 </div>
 
 @yield('content')

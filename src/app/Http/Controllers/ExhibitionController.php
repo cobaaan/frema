@@ -15,6 +15,31 @@ use Illuminate\Support\Facades\DB;
 
 class ExhibitionController extends Controller
 {
+    public function exhibitionPage(){
+        $auth = Auth::user();
+        
+        if(is_null(auth()->id())){
+            $admin = Auth::guard('admin')->check();
+            if($admin) {
+                return redirect('/thanks')
+                ->with('message', '出品機能は一般ユーザーのみ使用できます。')
+                ->with('address', route('/'))
+                ->with('page', 'トップページ');
+            }
+            else {
+                return redirect('/thanks')
+                ->with('message', '出品機能はログイン後に使用できます。')
+                ->with('address', route('/'))
+                ->with('page', 'トップページ');
+            }
+        }
+        else {
+            return view ('exhibition', compact('auth'));
+        }
+        
+        //return view ('exhibition', compact('auth'));
+    }
+    
     public function exhibition(Request $request) {
         $auth = Auth::user();
         

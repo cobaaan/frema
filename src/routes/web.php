@@ -50,7 +50,8 @@ Route::get('/my/page{id}', [FremaController::class, 'myPage'])->name('my.page');
 
 //Route::get('/profile', [FremaController::class, 'profilePage']);
 
-Route::get('/exhibition', [FremaController::class, 'exhibitionPage']);
+//Route::get('/exhibition', [FremaController::class, 'exhibitionPage'])->name('exhibition.page');
+Route::get('/exhibition', [ExhibitionController::class, 'exhibitionPage'])->name('exhibition.page');
 Route::post('/exhibition', [ExhibitionController::class, 'exhibition']);
 
 Route::get('/profile{id}', [ProfileController::class, 'profilePage'])->name('profile.page');
