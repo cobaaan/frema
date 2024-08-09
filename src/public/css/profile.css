@@ -21,7 +21,7 @@
 
 .main__file {
     position: relative;
-    margin-bottom: 50px;
+
 }
 
 .main__file--label {
@@ -58,13 +58,26 @@ input[type=file] {
     margin: 0;
 }
 
+.main__content {
+    margin-bottom: 20px;
+}
+
 .main__input {
     width: 100%;
     padding: 10px;
     font-size: 1.6rem;
     border: solid #ccc;
     border-radius: 5px;
-    margin-bottom: 30px;
+
+}
+
+.main__error {
+    font-size: 1.6rem;
+    background-color: #ff0000;
+    color: white;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 5px 15px;
 }
 
 .main__btn {
@@ -85,11 +98,11 @@ input[type=file] {
         width: 90%;
     }
 
-.main__file--label {
-    top: 40%;
-    left: 120px;
-    transform: translate(0%, -50%);
-}
+    .main__file--label {
+        top: 40%;
+        left: 120px;
+        transform: translate(0%, -50%);
+    }
 
     .main__file--txt {
     font-size: 1.4rem;

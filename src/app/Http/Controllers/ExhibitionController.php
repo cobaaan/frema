@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Http\Requests\ExhibitionRequest;
+
 use App\Models\Brand;
 use App\Models\Condition;
 use App\Models\Product;
@@ -40,7 +42,7 @@ class ExhibitionController extends Controller
         //return view ('exhibition', compact('auth'));
     }
     
-    public function exhibition(Request $request) {
+    public function exhibition(ExhibitionRequest $request) {
         $auth = Auth::user();
         
         $conditionId = ExhibitionController::conditionGet($request);

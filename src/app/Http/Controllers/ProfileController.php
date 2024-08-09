@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Http\Requests\AddressRequest;
+use App\Http\Requests\ProfileRequest;
+
 use App\Models\Profile;
 use App\Models\User;
 
@@ -17,7 +20,7 @@ class ProfileController extends Controller
         return view ('profile', compact('auth'));
     }
     
-    public function profileChange(Request $request) {
+    public function profileChange(ProfileRequest $request) {
         $auth = Auth::user();
         
         $name = [
@@ -66,7 +69,7 @@ class ProfileController extends Controller
         return view ('address', compact('request'));
     }
     
-    public function addressChange(Request $request) {
+    public function addressChange(AddressRequest $request) {
         $auth = Auth::user();
         
         $param = [

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 
+use App\Http\Requests\CommentRequest;
+
 use App\Models\Brand;
 use App\Models\Comment;
 use App\Models\Condition;
@@ -57,7 +59,7 @@ class CommentController extends Controller
         return view ('comment', compact('auth', 'product', 'categories', 'condition', 'brand', 'favorite', 'comments', 'favorites'));
     }
     
-    public function commentSend(Request $request) {
+    public function commentSend(CommentRequest $request) {
         $param = [
             'user_id' => $request->user_id,
             'product_id' => $request->product_id,

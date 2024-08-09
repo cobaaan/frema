@@ -91,9 +91,19 @@
             <form class="main__info--form" action="/comment/send" method="post">
                 @csrf
                 <p class="main__info--form-txt">商品へのコメント</p>
+                {{--}}
                 <input type="hidden" name="product_id" value="{{ $product->id }}">
                 <input type="hidden" name="user_id" value="{{ $auth->id }}">
-                <textarea class="main__info--textarea" name="comment" id="" cols="30" rows="10"></textarea>
+                --}}
+                
+                <input type="hidden" name="user_id" value="{{ old('user_id', $auth->id) }}">
+                <input type="hidden" name="product_id" value="{{ old('product_id', $product->id) }}">
+                <textarea class="main__info--textarea" name="comment" id="" cols="30" rows="10" maxlength="1000"></textarea>
+                
+                @if($errors->has('comment'))
+                <div class="main__info--error">{{ $errors->first('comment') }}</div>
+                @endif
+                
                 <button class="main__info--btn">コメントを送信する</button>
             </form>
             @endif

@@ -11,6 +11,7 @@
 
 .main__index {
     font-size: 1.4rem;
+    margin-top: 30px;
     margin-bottom: 0;
 }
 
@@ -19,7 +20,16 @@
     height: 30px;
     text-indent: 5px;
     font-size: 1.4rem;
-    margin-bottom: 30px;
+}
+
+.main__input--error {
+    background-color: #ff0000;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 1.4rem;
+    display: inline-block;
+    margin-top: 10px;
 }
 
 .main__btn {

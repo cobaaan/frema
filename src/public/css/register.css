@@ -25,6 +25,15 @@
     font-size: 1.5rem;
 }
 
+.content__error {
+    display: inline-block;
+    background-color: #ff0000;
+    color: white;
+    font-size: 1.5rem;
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
 .content__btn {
     width: 100%;
     height: 35px;

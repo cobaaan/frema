@@ -47,14 +47,15 @@ class FremaController extends Controller
     return view ('payment');
     }
     */
+    /*
     public function loginPage(){
-        return view ('auth/login');
+    return view ('auth/login');
     }
     
     public function registerPage(){
-        return view ('auth/register');
+    return view ('auth/register');
     }
-    
+    */
     /*
     public function productPage(){
     return view ('product');
@@ -115,34 +116,36 @@ class FremaController extends Controller
     return view ('exhibition', compact('auth'));
     }
     */
+    /*
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        
-        if (Auth::guard('web')->attempt($credentials)) {
-            return redirect()->route('/');
-        }
-        
-        if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect()->route('/');
-        }
-        
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+    $credentials = $request->only('email', 'password');
+    
+    if (Auth::guard('web')->attempt($credentials)) {
+    return redirect()->route('/');
+    }
+    
+    if (Auth::guard('admin')->attempt($credentials)) {
+    return redirect()->route('/');
+    }
+    
+    return back()->withErrors([
+    'email' => 'The provided credentials do not match our records.',
+    ]);
     }
     
     public function logout(Request $request)
     {
-        if (Auth::guard('admin')->check()) {
-            Auth::guard('admin')->logout();
-        } elseif (Auth::guard('web')->check()) {
-            Auth::guard('web')->logout();
-        }
-        
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        
-        return redirect('/');
+    if (Auth::guard('admin')->check()) {
+    Auth::guard('admin')->logout();
+    } elseif (Auth::guard('web')->check()) {
+    Auth::guard('web')->logout();
     }
+    
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    
+    return redirect('/');
+    }
+    */
 }
