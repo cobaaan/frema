@@ -80,7 +80,6 @@ class ProfileController extends Controller
         
         Profile::where('user_id', $auth->id)->update($param);
         
-        //return redirect('/thanks')->with('message', 'プロフィールが変更されました。');
         return redirect('/thanks')
         ->with('message', '住所が変更されました。')
         ->with('address', route('store.page', ['id' => $request->product_id]))

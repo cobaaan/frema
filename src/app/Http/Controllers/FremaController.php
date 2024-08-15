@@ -15,13 +15,10 @@ class FremaController extends Controller
 {
     public function top() {
         $auth = Auth::user();
-        //$admin = Auth::admin();
-        //dd($admin);
+        
         $products = DB::table('products')
         ->where('buyer_id', null)
         ->get();
-        
-        //$favoriteProductIds = $auth->favoriteProducts()->pluck('product_id')->toArray();
         
         if(isset($auth)){
             $favoriteProductIds = $auth->favoriteProducts()->pluck('product_id')->toArray();
@@ -36,7 +33,6 @@ class FremaController extends Controller
             $favorites = null;
             return view ('top', compact('auth', 'products', 'favorites', 'favoriteProductIds'));
         }
-        //return view ('top', compact('products'));
     }
     
     public function thanks() {

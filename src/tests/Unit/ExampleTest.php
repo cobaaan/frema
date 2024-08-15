@@ -7,12 +7,15 @@ use PHPUnit\Framework\TestCase;
 class ExampleTest extends TestCase
 {
     /**
-     * A basic test example.
-     *
-     * @return void
-     */
+    * A basic test example.
+    *
+    * @return void
+    */
     public function test_example()
     {
+        //$a = 1;
+        //$b = 1;
         $this->assertTrue(true);
+        //$this->assertEquals($a, $b);
     }
 }

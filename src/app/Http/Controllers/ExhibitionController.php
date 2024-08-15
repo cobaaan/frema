@@ -38,15 +38,13 @@ class ExhibitionController extends Controller
         else {
             return view ('exhibition', compact('auth'));
         }
-        
-        //return view ('exhibition', compact('auth'));
     }
     
     public function exhibition(ExhibitionRequest $request) {
         $auth = Auth::user();
         
-        $conditionId = ExhibitionController::conditionGet($request);
-        $brandId = ExhibitionController::brandGet($request);
+        $conditionId = $this->conditionGet($request);
+        $brandId = $this->brandGet($request);
         
         $file_name = $request->image_path->getClientOriginalName();
         
@@ -66,7 +64,7 @@ class ExhibitionController extends Controller
         
         $newProductId = $newProduct->id;
         
-        $categories = ExhibitionController::categoryGet($request, $newProductId);
+        $categories = $this->categoryGet($request, $newProductId);
         
         $product = Product::find($newProductId);
         $categoryIds = array_map(function($category) {
