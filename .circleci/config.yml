@@ -13,7 +13,7 @@ jobs:
             sudo rm -f /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
-            sudo apt-get install -y libmysqlclient-dev
+            sudo apt-get install -y libmariadb-dev
             sudo docker-php-ext-install gd pdo pdo_mysql
       - run:
           name: Composer Install
