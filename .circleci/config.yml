@@ -13,7 +13,7 @@ jobs:
             sudo rm -f /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
-            docker-php-ext-install gd
+            sudo docker-php-ext-install gd  # sudoを追加
             composer install
       - run:
           name: Copy .env file
