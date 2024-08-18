@@ -9,6 +9,8 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
+            # Google Chromeのリポジトリを無効にする
+            sudo rm -f /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
             docker-php-ext-install gd
