@@ -1,0 +1,48 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/php:7.4-node-browsers
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
+            docker-php-ext-install gd
+            composer install
+      - run:
+          name: Copy .env file
+          command: cp .env.example .env
+      - run:
+          name: Generate Application Key
+          command: php artisan key:generate
+      - run:
+          name: Run Migrations
+          command: php artisan migrate --force
+      - run:
+          name: Run Tests
+          command: php artisan test --env=testing
+
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/php:7.4-node-browsers
+    steps:
+      - run:
+          name: Deploy Application
+          command: |
+            echo "Deployment steps here..."
+            # ここにデプロイスクリプトを追加します
+
