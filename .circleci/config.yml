@@ -13,11 +13,12 @@ jobs:
             sudo rm -f /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
-            sudo docker-php-ext-install gd
+            sudo apt-get install -y libmysqlclient-dev
+            sudo docker-php-ext-install gd pdo pdo_mysql
       - run:
           name: Composer Install
           command: composer install
-          working_directory: ~/project/src  # srcディレクトリを指定
+          working_directory: ~/project/src
       - run:
           name: Copy .env file
           command: cp ~/project/src/.env.example ~/project/src/.env
