@@ -16,18 +16,15 @@
     <h2 class="main__ttl">Stripe決済</h2>
     <form id="card-form" action="{{ route('payment.credit') }}" method="POST">
         @csrf
-        <div>
-            <label class="main__txt" for="card_number">カード番号</label>
-            <div class="main__input" id="card-number"></div>
-        </div>
-        <div>
-            <label class="main__txt" for="card_expiry">有効期限</label>
-            <div class="main__input" id="card-expiry"></div>
-        </div>
-        <div>
-            <label class="main__txt" for="card-cvc">セキュリティコード</label>
-            <div class="main__input" id="card-cvc"></div>
-        </div>
+        
+        <label class="main__txt" for="card_number">カード番号</label>
+        <div class="main__input" id="card-number"></div>
+        
+        <label class="main__txt" for="card_expiry">有効期限</label>
+        <div class="main__input" id="card-expiry"></div>
+        
+        <label class="main__txt" for="card-cvc">セキュリティコード</label>
+        <div class="main__input" id="card-cvc"></div>
         
         <div class="main__txt--error" id="card-errors"></div>
         

@@ -55,11 +55,7 @@ input[type=file] {
 .main__index {
     font-size: 1.6rem;
     font-weight: bold;
-    margin: 0;
-}
-
-.main__content {
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .main__input {

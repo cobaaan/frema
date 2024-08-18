@@ -17,51 +17,51 @@
         <div class="main__file">
             <label class="main__file--label">
                 画像を選択する
-                <input type="file" name="image_path" accept=".jpg, .jpeg, .png">
+                <input type="file" name="image_path" accept=".jpg, .jpeg, .png" value="{{ old('image_path') }}">
             </label>
             <p class="main__file--txt">選択されていません</p>
         </div>
         @if($errors->has('image_path'))
-        <div class="main__error">{{ $errors->first('image_path') }}</div>
+        <p class="main__error">{{ $errors->first('image_path') }}</p>
         @endif
         
         <h2 class="main__index">商品の詳細</h2>
         <p class="main__subtitle">カテゴリー</p>
-        <input name='tags' class='main__input' autofocus>
+        <input name='tags' class='main__input' autofocus value="{{ old('tags') }}">
         @if($errors->has('tags'))
-        <div class="main__error">{{ $errors->first('tags') }}</div>
+        <p class="main__error">{{ $errors->first('tags') }}</p>
         @endif
         
         <p class="main__subtitle">商品の状態</p>
-        <input class="main__input" type="text" name="condition">
+        <input class="main__input" type="text" name="condition" value="{{ old('condition') }}">
         @if($errors->has('condition'))
-        <div class="main__error">{{ $errors->first('condition') }}</div>
+        <p class="main__error">{{ $errors->first('condition') }}</p>
         @endif
         
         <h2 class="main__index">商品名と説明</h2>
         <p class="main__subtitle">商品名</p>
-        <input class="main__input" type="text" name="name">
+        <input class="main__input" type="text" name="name" value="{{ old('name') }}">
         @if($errors->has('name'))
-        <div class="main__error">{{ $errors->first('name') }}</div>
+        <p class="main__error">{{ $errors->first('name') }}</p>
         @endif
         
         <p class="main__subtitle">ブランド名</p>
-        <input class="main__input" type="text" name="brand">
+        <input class="main__input" type="text" name="brand" value="{{ old('brand') }}">
         @if($errors->has('brand'))
-        <div class="main__error">{{ $errors->first('brand') }}</div>
+        <p class="main__error">{{ $errors->first('brand') }}</p>
         @endif
         
         <p class="main__subtitle">商品の説明</p>
-        <textarea class="main__form--textarea" name="description" id="" cols="30" rows="10"></textarea>
+        <textarea class="main__form--textarea" name="description" id="" cols="30" rows="10" value="{{ old('description') }}"></textarea>
         @if($errors->has('description'))
-        <div class="main__error">{{ $errors->first('description') }}</div>
+        <p class="main__error">{{ $errors->first('description') }}</p>
         @endif
         
         <h2 class="main__index">販売価格</h2>
         <p class="main__subtitle">販売価格</p>
-        <input class="main__input" type="number" name="price" step="1" placeholder="¥">
+        <input class="main__input" type="number" name="price" step="1" placeholder="¥" value="{{ old('price') }}">
         @if($errors->has('price'))
-        <div class="main__error">{{ $errors->first('price') }}</div>
+        <p class="main__error">{{ $errors->first('price') }}</p>
         @endif
         
         @auth
@@ -83,9 +83,6 @@
             }
         });
     });
-    
-    
-    
     
     var input = document.querySelector('input[name=tags]'),
     tagify = new Tagify(input, {

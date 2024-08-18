@@ -36,7 +36,7 @@
     <h2 class="main__ttl">プロフィール設定</h2>
     <form class="main__form" action="/profile/change" method="post" enctype="multipart/form-data">
         @csrf
-        <div class="main__file main__content">
+        <div class="main__file">
             <img class="main__img" src="{{ asset($auth->profiles->image_path) }}" alt="">
             <label class="main__file--label">
                 画像を選択する
@@ -45,46 +45,35 @@
             <p class="main__file--txt">画像を選択してください</p>
             
         </div>
-        
         @error('image_path')
         <p class="main__error">{{ $errors->first('image_path') }}</p>
         @enderror
         
-        <div class="main__content">
-            <p class="main__index">ユーザー名</p>
-            <input class="main__input" type="text" name="name">
-            
-            @error('name')
-            <p class="main__error">{{ $errors->first('name') }}</p>
-            @enderror
-        </div>
         
-        <div class="main__content">
-            <p class="main__index">郵便番号</p>
-            <input class="main__input" type="text" name="postcode" maxlength="7">
-            
-            @error('postcode')
-            <p class="main__error">{{ $errors->first('postcode') }}</p>
-            @enderror
-        </div>
+        <p class="main__index">ユーザー名</p>
+        <input class="main__input" type="text" name="name" value="{{ old('name') }}">
+        @error('name')
+        <p class="main__error">{{ $errors->first('name') }}</p>
+        @enderror
         
-        <div class="main__content">
-            <p class="main__index">住所</p>
-            <input class="main__input" type="text" name="address">
-            
-            @error('address')
-            <p class="main__error">{{ $errors->first('address') }}</p>
-            @enderror
-        </div>
+        <p class="main__index">郵便番号</p>
+        <input class="main__input" type="text" name="postcode" maxlength="7" value="{{ old('postcode') }}">
+        @error('postcode')
+        <p class="main__error">{{ $errors->first('postcode') }}</p>
+        @enderror
         
-        <div class="main__content">
-            <p class="main__index">建物名</p>
-            <input class="main__input" type="text" name="building">
-            
-            @error('building')
-            <p class="main__error">{{ $errors->first('building') }}</p>
-            @enderror
-        </div>
+        <p class="main__index">住所</p>
+        <input class="main__input" type="text" name="address" value="{{ old('address') }}">
+        @error('address')
+        <p class="main__error">{{ $errors->first('address') }}</p>
+        @enderror
+        
+        
+        <p class="main__index">建物名</p>
+        <input class="main__input" type="text" name="building" value="{{ old('building') }}">
+        @error('building')
+        <p class="main__error">{{ $errors->first('building') }}</p>
+        @enderror
         
         <button class="main__btn">更新する</button>
     </form>

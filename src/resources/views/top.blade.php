@@ -43,19 +43,16 @@
 
 <div class="card" id="product">
     @foreach ($products as $product)
-    <div class="card__content"
-    data-favorite="{{ is_array($favoriteProductIds) && in_array($product->id, $favoriteProductIds) ? 'true' : 'false' }}"
-    data-card-name="{{ $product->name }}"
-    data-card-description="{{ $product->description }}">
-    
-    <form class="card__content--form" action="{{ route('product.page', ['id' => $product->id]) }}" method="get">
-        @csrf
-        <button class="card__content--form-btn">
-            <img class="card__content--form-img" src="{{ asset($product->image_path) }}">
-        </button>
-    </form>
-</div>
-@endforeach
+    <div class="card__content" data-favorite="{{ is_array($favoriteProductIds) && in_array($product->id, $favoriteProductIds) ? 'true' : 'false' }}" data-card-name="{{ $product->name }}" data-card-description="{{ $product->description }}">
+        
+        <form class="card__content--form" action="{{ route('product.page', ['id' => $product->id]) }}" method="get">
+            @csrf
+            <button class="card__content--form-btn">
+                <img class="card__content--form-img" src="{{ asset($product->image_path) }}">
+            </button>
+        </form>
+    </div>
+    @endforeach
 </div>
 
 <script>

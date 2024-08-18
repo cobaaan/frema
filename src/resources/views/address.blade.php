@@ -13,21 +13,21 @@
         <input class="main__input" type="text" name="postcode" maxlength="7" value="{{ old('postcode') }}">
         
         @if($errors->has('postcode'))
-        <div class="main__input--error">{{ $errors->first('postcode') }}</div>
+        <p class="main__input--error">{{ $errors->first('postcode') }}</p>
         @endif
         
         <h2 class="main__index">住所</h2>
         <input class="main__input" type="text" name="address" value="{{ old('address') }}">
         
         @if($errors->has('address'))
-        <div class="main__input--error">{{ $errors->first('address') }}</div>
+        <p class="main__input--error">{{ $errors->first('address') }}</p>
         @endif
         
         <h2 class="main__index">建物名</h2>
         <input class="main__input" type="text" name="building" value="{{ old('building') }}">
         
         @if($errors->has('building'))
-        <div class="main__input--error">{{ $errors->first('building') }}</div>
+        <p class="main__input--error">{{ $errors->first('building') }}</p>
         @endif
         
         

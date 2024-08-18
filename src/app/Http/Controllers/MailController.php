@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MailRequest;
+
 use App\Models\User;
 
 use Illuminate\Http\Request;
@@ -13,7 +15,7 @@ class MailController extends Controller
         return view ('mailForm');
     }
     
-    public function mailSend(Request $request) {
+    public function mailSend(MailRequest $request) {
         $users = User::all();
         
         foreach($users as $user){

@@ -39,16 +39,19 @@
         @csrf
         <p class="main__txt">件名</p>
         <input class="main__subject" type="text" name="subject">
+        <br>
+        @if($errors->has('subject'))
+        <p class="main__error">{{ $errors->first('subject') }}</p>
+        @endif
         
         <p class="main__txt">本文</p>
         <textarea class="main__body" name="body" id="" cols="30" rows="10"></textarea>
-        
+        @if($errors->has('body'))
+        <p class="main__error">{{ $errors->first('body') }}</p>
+        @endif
+        <br>
         <button class="main__btn">送信</button>
     </form>
 </div>
-
-<script>
-    
-</script>
 
 @endsection
