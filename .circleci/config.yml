@@ -4,6 +4,14 @@ jobs:
   build:
     docker:
       - image: circleci/php:7.4-node-browsers
+        # Use a MySQL service
+      - image: circleci/mysql:5.7
+        name: mysql
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: your_database_name
+          MYSQL_USER: your_database_user
+          MYSQL_PASSWORD: your_database_password
     steps:
       - checkout
       - run:
@@ -27,7 +35,7 @@ jobs:
           name: Set Environment Variables
           command: |
             echo "DB_CONNECTION=mysql" >> .env
-            echo "DB_HOST=${DB_HOST}" >> .env
+            echo "DB_HOST=127.0.0.1" >> .env
             echo "DB_DATABASE=${DB_DATABASE}" >> .env
             echo "DB_USERNAME=${DB_USERNAME}" >> .env
             echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
