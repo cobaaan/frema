@@ -13,11 +13,15 @@ jobs:
             sudo rm -f /etc/apt/sources.list.d/google-chrome.list
             sudo apt-get update
             sudo apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev
-            sudo docker-php-ext-install gd  # sudoを追加
-            composer install
+            sudo docker-php-ext-install gd
+      - run:
+          name: Composer Install
+          command: composer install
+          working_directory: ~/project/src  # srcディレクトリを指定
       - run:
           name: Copy .env file
-          command: cp .env.example .env
+          command: cp ~/project/src/.env.example ~/project/src/.env
+          working_directory: ~/project/src
       - run:
           name: Set Environment Variables
           command: |
@@ -28,15 +32,19 @@ jobs:
             echo "DB_PASSWORD=${DB_PASSWORD}" >> .env
             echo "APP_ENV=testing" >> .env
             echo "APP_DEBUG=true" >> .env
+          working_directory: ~/project/src
       - run:
           name: Generate Application Key
           command: php artisan key:generate
+          working_directory: ~/project/src
       - run:
           name: Run Migrations
           command: php artisan migrate --force
+          working_directory: ~/project/src
       - run:
           name: Run Tests
           command: php artisan test --env=testing
+          working_directory: ~/project/src
 
   deploy:
     docker:
