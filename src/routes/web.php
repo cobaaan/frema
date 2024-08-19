@@ -44,7 +44,6 @@ Route::post('/store/{id}', [StoreController::class, 'storePage'])->name('store.p
 Route::get('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
 Route::post('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
 
-//Route::get('/comment', [CommentController::class, 'commentPage']);
 //Route::post('/comment', [CommentController::class, 'commentPage']);
 Route::post('/comment/send', [CommentController::class, 'commentSend']);
 
