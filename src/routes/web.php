@@ -32,7 +32,6 @@ Route::post('/login', [FortifyController::class, 'login']);
 
 Route::get('/', [FremaController::class, 'top'])->name('/');
 Route::get('/thanks', [FremaController::class, 'thanks']);
-//Route::post('/logout', [FremaController::class, 'logout'])->name('logout');
 
 Route::post('/product', [ProductController::class, 'productPage']);
 Route::get('/product/{id}', [ProductController::class, 'productPage'])->name('product.page');
