@@ -79,6 +79,8 @@ Route::prefix('purchase')->group(function () {
 
 Route::get('/sell', [SellController::class, 'sellPage'])->name('sell.page');
 Route::post('/sell', [SellController::class, 'sell']);
+Route::post('/sell', [SellController::class, 'sell'])->middleware('web');
+
 
 
 /*

@@ -36,7 +36,7 @@ class ProductCreateTest extends TestCase
         $condition = Condition::factory()->create();
         $brand = Brand::factory()->create();
         
-        $controller = Mockery::mock(ExhibitionController::class);
+        $controller = Mockery::mock(SellController::class);
         
         $controller->shouldReceive('conditionGet')
         ->andReturn(1);
@@ -44,14 +44,14 @@ class ProductCreateTest extends TestCase
         $controller->shouldReceive('brandGet')
         ->andReturn(1);
         
-        $this->app->instance(ExhibitionController::class, $controller);
+        $this->app->instance(SellController::class, $controller);
         
         $data = [
             'seller_id' => $user->id,
             'condition' => $condition->condition,
             'brand' => $brand->name,
             'name' => 'テスト商品',
-            'image_path' => 'test.jpg',
+            'image_path' => UploadedFile::fake()->image('test.jpg'),
             'price' => 1000,
             'description' => 'テスト商品の説明',
             'tags' => json_encode([
