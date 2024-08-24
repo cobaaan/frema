@@ -11,7 +11,7 @@
 <div class="main">
     <h2 class="main__ttl">商品の出品</h2>
     
-    <form action="/exhibition" method="post" enctype="multipart/form-data">
+    <form action="/sell" method="post" enctype="multipart/form-data">
         @csrf
         <p class="main__subtitle">商品画像</p>
         <div class="main__file">

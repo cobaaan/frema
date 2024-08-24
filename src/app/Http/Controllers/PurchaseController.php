@@ -8,9 +8,9 @@ use App\Models\Product;
 
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class PurchaseController extends Controller
 {
-    public function storePage(Request $request, $id){
+    public function purchasePage(Request $request, $id){
         $auth = Auth::user();
         
         if(is_null(auth()->id())){
@@ -33,14 +33,7 @@ class StoreController extends Controller
             ->where('id', $id)
             ->first();
             
-            return view ('store', compact('auth', 'product'));
+            return view ('purchase', compact('auth', 'product'));
         }
-        /*
-        $product = Product::all()
-        ->where('id', $id)
-        ->first();
-        
-        return view ('store', compact('auth', 'product'));
-        */
     }
 }

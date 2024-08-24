@@ -24,7 +24,7 @@ class AddressRequest extends FormRequest
     public function rules()
     {
         return [
-            'postcode' => 'required | digits:7 | integer | regex:/^[0-9]+$/',
+            'postcode' => 'required | digits:7 | regex:/^[0-9]+$/',
             'address' => 'required | max:191',
             'building' => 'required | max:191',
         ];
@@ -34,7 +34,6 @@ class AddressRequest extends FormRequest
         return [
             'postcode.required' => '郵便番号を入力してください',
             'postcode.digits' => '7文字で入力してください',
-            'postcode.integer' => '半角数字で入力してください',
             'postcode.regex' => '1~9の半角数字を入力してください',
             'address.required' => '住所を入力してください',
             'address.max' => '191文字以内で入力してください',

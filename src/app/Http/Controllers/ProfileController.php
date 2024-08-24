@@ -61,7 +61,7 @@ class ProfileController extends Controller
         
         return redirect('/thanks')
         ->with('message', '支払い方法が変更されました。')
-        ->with('address', route('store.page', ['id' => $request->product_id]))
+        ->with('address', route('purchase.page', ['id' => $request->product_id]))
         ->with('page', '購入ページ');
     }
     
@@ -82,7 +82,7 @@ class ProfileController extends Controller
         
         return redirect('/thanks')
         ->with('message', '住所が変更されました。')
-        ->with('address', route('store.page', ['id' => $request->product_id]))
+        ->with('address', route('purchase.page', ['id' => $request->product_id]))
         ->with('page', '購入ページ');
     }
 }

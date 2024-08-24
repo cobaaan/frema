@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 
-use App\Http\Requests\ExhibitionRequest;
+use App\Http\Requests\SellRequest;
 
 use App\Models\Brand;
 use App\Models\Condition;
@@ -15,9 +15,9 @@ use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ExhibitionController extends Controller
+class SellController extends Controller
 {
-    public function exhibitionPage(){
+    public function sellPage(){
         $auth = Auth::user();
         
         if(is_null(auth()->id())){
@@ -36,11 +36,11 @@ class ExhibitionController extends Controller
             }
         }
         else {
-            return view ('exhibition', compact('auth'));
+            return view ('sell', compact('auth'));
         }
     }
     
-    public function exhibition(ExhibitionRequest $request) {
+    public function sell(sellRequest $request) {
         $auth = Auth::user();
         
         $conditionId = $this->conditionGet($request);

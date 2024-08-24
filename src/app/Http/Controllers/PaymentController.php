@@ -7,6 +7,8 @@ use Auth;
 use App\Http\Requests\StorePaymentRequest;
 
 use App\Models\Product;
+use App\Models\Profile;
+use App\Models\User;
 
 use Exception;
 
@@ -17,29 +19,19 @@ use Stripe\PaymentIntent;
 
 class PaymentController extends Controller
 {
-    public function payment() {
-        
-        return redirect('/thanks')
-        ->with('message', 'ご購入ありがとうございました。')
-        ->with('address', '/')
-        ->with('page', 'トップページ');
-    }
-    
     public function credit(Request $request) {
         $auth = Auth::user();
-        $request = $request;
-        
-        return view('credit', compact('auth', 'request'));
-    }
-    
-    public function convenience(Request $request) {
-        $auth = Auth::user();
-        
-        return view('convenience', compact('auth', 'request'));
-    }
-    
-    public function bank() {
-        return view('bank');
+        $address = $auth->profiles->address;
+        if(isset($address)){
+            $request = $request;
+            
+            return view('credit', compact('auth', 'request'));
+        } else {
+            return redirect('/thanks')
+            ->with('message', '配送先を入力してください。')
+            ->with('address', route('purchase.page', ['id' => $request->product_id]))
+            ->with('page', '元のページ');
+        }
     }
     
     public function paymentCredit(Request $request)

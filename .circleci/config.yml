@@ -9,9 +9,9 @@ jobs:
         name: mysql
         environment:
           MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: your_database_name
-          MYSQL_USER: your_database_user
-          MYSQL_PASSWORD: your_database_password
+          MYSQL_DATABASE: laravel_db
+          MYSQL_USER: laravel_user
+          MYSQL_PASSWORD: laravel_pass
     steps:
       - checkout
       - run:
