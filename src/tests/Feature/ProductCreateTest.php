@@ -46,12 +46,19 @@ class ProductCreateTest extends TestCase
         
         $this->app->instance(ExhibitionController::class, $controller);
         
+        // 画像アップロード部分をモック化
+        $mockedFile = Mockery::mock(UploadedFile::class);
+        $mockedFile->shouldReceive('getClientOriginalName')
+        ->andReturn('test.jpg');
+        $mockedFile->shouldReceive('storeAs')
+        ->andReturn('test.jpg');
+        
         $data = [
             'seller_id' => $user->id,
             'condition' => $condition->condition,
             'brand' => $brand->name,
             'name' => 'テスト商品',
-            'image_path' => UploadedFile::fake()->image('test.jpg'),
+            'image_path' => $mockedFile,  // モックしたファイルを使用
             'price' => 1000,
             'description' => 'テスト商品の説明',
             'tags' => json_encode([
@@ -59,6 +66,7 @@ class ProductCreateTest extends TestCase
                 ['value' => 'タグ2']
             ]),
         ];
+        
         $response = $this->post('/sell', $data);
         
         $response->assertStatus(302);
@@ -71,5 +79,6 @@ class ProductCreateTest extends TestCase
             'price' => 1000,
         ]);
     }
+    
     
 }
