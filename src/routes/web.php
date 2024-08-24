@@ -95,24 +95,7 @@ Route::post('/favorite/{id}', [FavoriteController::class, 'toggleFavorite'])->na
 
 Route::get('/register', [FortifyController::class, 'registerPage']);
 Route::get('/login', [FortifyController::class, 'loginPage']);
-Route::post('/logout', [FortifyController::class, 'logout'])->name('logout');
-Route::post('/login', [FortifyController::class, 'login']);
-
-Route::get('/', [FremaController::class, 'top'])->name('/');
-Route::get('/thanks', [FremaController::class, 'thanks']);
-Route::get('/my/page{id}', [FremaController::class, 'myPage'])->name('my.page');
-
-Route::get('/mail', [MailController::class, 'mailForm'])->name('mail.form');
-Route::post('/mail/send', [MailController::class, 'mailSend']);
-
-
-Route::get('/credit', [PaymentController::class, 'credit']);
-Route::post('/credit', [PaymentController::class, 'credit']);
-Route::post('/payment/credit', [PaymentController::class, 'paymentCredit'])->name('payment.credit');
-
-Route::get('/profile{id}', [ProfileController::class, 'profilePage'])->name('profile.page');
-Route::post('/profile/change', [ProfileController::class, 'profileChange']);
-Route::post('/profile/payment', [ProfileController::class, 'paymentPage']);
+Route::post('/ge']);
 Route::post('/profile/payment/change', [ProfileController::class, 'paymentChange']);
 Route::get('/profile/address', [ProfileController::class, 'addressPage']);
 Route::post('/profile/address', [ProfileController::class, 'addressPage']);
