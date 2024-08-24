@@ -18,47 +18,42 @@ use Mockery;
 
 class ProductCreateTest extends TestCase
 {
-    /**
-    * A basic feature test example.
-    *
-    * @return void
-    */
-    
     use RefreshDatabase;
     
     public function test_example()
     {
+        // ユーザーの作成とログイン処理
         $user = User::factory()->create();
         $this->actingAs($user);
         
+        // 仮のストレージディスク
         Storage::fake('public');
         
+        // 必要なモデルの作成
         $condition = Condition::factory()->create();
         $brand = Brand::factory()->create();
         
+        // ExhibitionController のモック作成
         $controller = Mockery::mock(ExhibitionController::class);
         
         $controller->shouldReceive('conditionGet')
-        ->andReturn(1);
+        ->andReturn($condition->id);  // モックでconditionを返すように修正
         
         $controller->shouldReceive('brandGet')
-        ->andReturn(1);
+        ->andReturn($brand->id);  // モックでbrandを返すように修正
         
         $this->app->instance(ExhibitionController::class, $controller);
         
         // 画像アップロード部分をモック化
-        $mockedFile = Mockery::mock(UploadedFile::class);
-        $mockedFile->shouldReceive('getClientOriginalName')
-        ->andReturn('test.jpg');
-        $mockedFile->shouldReceive('storeAs')
-        ->andReturn('test.jpg');
+        $mockedFile = UploadedFile::fake()->image('test.jpg');  // `UploadedFile::fake()`で画像をモック化
         
+        // フォームデータ作成
         $data = [
             'seller_id' => $user->id,
             'condition' => $condition->condition,
             'brand' => $brand->name,
             'name' => 'テスト商品',
-            'image_path' => $mockedFile,  // モックしたファイルを使用
+            'image_path' => $mockedFile,  // モックファイルを使用
             'price' => 1000,
             'description' => 'テスト商品の説明',
             'tags' => json_encode([
@@ -67,18 +62,19 @@ class ProductCreateTest extends TestCase
             ]),
         ];
         
+        // フォーム送信
         $response = $this->post('/sell', $data);
         
+        // レスポンスの確認
         $response->assertStatus(302);
         $response->assertRedirect('/thanks');
         $this->assertEquals('/thanks', parse_url($response->headers->get('Location'), PHP_URL_PATH));
         $response->assertSessionHas('message', '商品を出品しました。');
         
+        // データベース確認
         $this->assertDatabaseHas('products', [
             'name' => 'テスト商品',
             'price' => 1000,
         ]);
     }
-    
-    
 }
