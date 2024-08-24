@@ -59,7 +59,7 @@ class ProductCreateTest extends TestCase
                 ['value' => 'タグ2']
             ]),
         ];
-        $response = $this->post('/exhibition', $data);
+        $response = $this->post('/sell', $data);
         
         $response->assertStatus(302);
         $response->assertRedirect('/thanks');
