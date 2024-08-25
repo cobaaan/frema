@@ -31,21 +31,24 @@ class ProductCreateTest extends TestCase
         $user = User::factory()->create();
         $this->actingAs($user);
         
-        // ファイルのストレージをモック化
         Storage::fake('public');
         
         $condition = Condition::factory()->create();
         $brand = Brand::factory()->create();
         
-        // モックした画像ファイルを使用
-        $mockedFile = UploadedFile::fake()->image('test.jpg');
+        // 画像ファイルを直接指定
+        $mockedFilePath = 'path/to/your/mock/image.jpg';
+        // テスト用の画像ファイルを手動で作成する必要があります
+        
+        // モックしたファイルをストレージに保存
+        Storage::disk('public')->put('image.jpg', file_get_contents($mockedFilePath));
         
         $data = [
             'seller_id' => $user->id,
             'condition' => $condition->condition,
             'brand' => $brand->name,
             'name' => 'テスト商品',
-            'image_path' => $mockedFile,  // モックしたファイルを使用
+            'image_path' => $mockedFilePath,  // 直接ファイルパスを指定
             'price' => 1000,
             'description' => 'テスト商品の説明',
             'tags' => json_encode([
@@ -69,8 +72,9 @@ class ProductCreateTest extends TestCase
         ]);
         
         // 画像が指定されたパスに保存されているか確認
-        Storage::disk('public')->assertExists('test.jpg');
+        Storage::disk('public')->assertExists('image.jpg');
     }
+    
     
     
     
