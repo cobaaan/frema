@@ -38,12 +38,7 @@ class CommentController extends Controller
             ->where('product_id', $id)
             ->get();
         }
-        /*
-        $favorite = DB::table('favorites')
-        ->where('user_id', $auth->id)
-        ->where('product_id', $id)
-        ->get();
-        */
+        
         $favorites = DB::table('favorites')
         ->where('product_id', $id)
         ->get();
