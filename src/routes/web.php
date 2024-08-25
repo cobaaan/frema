@@ -95,8 +95,7 @@ Route::post('/comment/send', [CommentController::class, 'commentSend']);
 
 Route::post('/favorite/{id}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
 
-Route::get('/register', [FortifyController::class, 'registerPage']);
-Route::get('/login', [FortifyController::class, 'loginPage']);
+
 Route::post('/ge']);
 Route::post('/profile/payment/change', [ProfileController::class, 'paymentChange']);
 Route::get('/profile/address', [ProfileController::class, 'addressPage']);
