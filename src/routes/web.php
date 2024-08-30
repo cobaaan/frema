@@ -80,34 +80,3 @@ Route::prefix('purchase')->group(function () {
 Route::get('/sell', [SellController::class, 'sellPage'])->name('sell.page');
 Route::post('/sell', [SellController::class, 'sell']);
 Route::post('/sell', [SellController::class, 'sell'])->middleware('web');
-
-
-
-/*
-Route::get('/admin/user', [AdminController::class, 'userListPage'])->name('user.list.page');
-Route::post('/admin/user/delete', [AdminController::class, 'userDelete']);
-Route::get('/admin/comment', [AdminController::class, 'commentListPage'])->name('comment.list.page');
-Route::post('/admin/comment/delete', [AdminController::class, 'commentDelete']);
-
-Route::get('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
-Route::post('/comment/page{id}', [CommentController::class, 'commentPage'])->name('comment.page');
-Route::post('/comment/send', [CommentController::class, 'commentSend']);
-
-Route::post('/favorite/{id}', [FavoriteController::class, 'toggleFavorite'])->name('favorite.toggle');
-
-
-Route::post('/ge']);
-Route::post('/profile/payment/change', [ProfileController::class, 'paymentChange']);
-Route::get('/profile/address', [ProfileController::class, 'addressPage']);
-Route::post('/profile/address', [ProfileController::class, 'addressPage']);
-Route::post('/profile/address/change', [ProfileController::class, 'addressChange']);
-
-Route::post('/product', [ProductController::class, 'productPage']);
-Route::get('/product/{id}', [ProductController::class, 'productPage'])->name('product.page');
-
-Route::get('/purchase/{id}', [PurchaseController::class, 'purchasePage'])->name('purchase.page');
-Route::post('/purchase/{id}', [PurchaseController::class, 'purchasePage'])->name('purchase.page');
-
-Route::get('/sell', [SellController::class, 'sellPage'])->name('sell.page');
-Route::post('/sell', [SellController::class, 'sell']);
-*/

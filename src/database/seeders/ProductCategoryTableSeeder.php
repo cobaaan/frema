@@ -248,9 +248,6 @@ class ProductCategoryTableSeeder extends Seeder
         ];
         DB::table('product_category')->insert($param);
         
-        
-        
-        
         $param = [
             'product_id' => 15,
             'category_id' => 24,
@@ -268,11 +265,6 @@ class ProductCategoryTableSeeder extends Seeder
             'category_id' => 26,
         ];
         DB::table('product_category')->insert($param);
-        
-        
-        
-        
-        
         
         $param = [
             'product_id' => 16,

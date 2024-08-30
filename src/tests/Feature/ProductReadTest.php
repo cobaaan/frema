@@ -18,6 +18,9 @@ class ProductReadTest extends TestCase
     *
     * @return void
     */
+    
+    use RefreshDatabase;
+    
     public function test_example()
     {
         $user = User::factory()->create();

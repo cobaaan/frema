@@ -1,7 +1,7 @@
 @extends('layouts/black')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/exhibition.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/sell.css') }}" />
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
@@ -69,7 +69,6 @@
         @endauth
         <button class="main__btn">出品する</button>
     </form>
-    
 </div>
 
 <script>

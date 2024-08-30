@@ -47,24 +47,5 @@ class FavoriteController extends Controller
             
             return back();
         }
-        /*
-        dd(auth()->id());
-        $favorite = Favorite::where('user_id', auth()->id())
-        ->where('product_id', $id)
-        ->first();
-        
-        if ($favorite) {
-        $favorite->delete();
-        } else {
-        Favorite::create([
-        'user_id' => auth()->id(),
-        'product_id' => $id,
-        ]);
-        }
-        
-        session(['product_id' => $id]);
-        
-        return back();
-        */
     }
 }

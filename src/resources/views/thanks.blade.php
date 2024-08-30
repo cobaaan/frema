@@ -11,7 +11,4 @@
     @endif
     <a class="content__a" href="{{ session('address') }}">{{ session('page') }}</a>
 </div>
-
-
-
 @endsection

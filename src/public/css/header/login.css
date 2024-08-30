@@ -11,6 +11,9 @@
     width: 95%;
     margin: auto;
     padding: 0;
+    background-color: black;
+    width: 100vw;
+    padding: 20px;
 }
 
 .header__list--item {

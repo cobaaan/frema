@@ -97,10 +97,6 @@
     width: 40%;
 }
 
-.detail__li:first-child {
-
-}
-
 .detail__list--item:last-child {
     margin-left: 30px;
 }

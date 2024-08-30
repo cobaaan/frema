@@ -13,6 +13,4 @@
 </head>
 <div class="header"></div>
 
-
-
 @yield('content')

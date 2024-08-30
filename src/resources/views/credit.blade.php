@@ -6,13 +6,6 @@
 
 @section('content')
 <div class="main">
-    @if (session('flash_alert'))
-    <div class="main__txt--error">{{ session('flash_alert') }}</div>
-    @elseif(session('status'))
-    <div class="main__txt--error">
-        {{ session('status') }}
-    </div>
-    @endif
     <h2 class="main__ttl">Stripe決済</h2>
     <form id="card-form" action="{{ route('payment.credit') }}" method="POST">
         @csrf
@@ -104,7 +97,5 @@
         form.submit();
     }
 </script>
-
-
 
 @endsection

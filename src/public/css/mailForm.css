@@ -65,4 +65,12 @@
     .main__txt {
         font-size: 1.5rem;
     }
+
+    .main__subject {
+        font-size: 1.5rem;
+    }
+
+    .main__body {
+        font-size: 1.5rem;
+    }
 }

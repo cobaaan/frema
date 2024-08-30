@@ -33,10 +33,6 @@
     display: flex;
 }
 
-.product__info--star {
-
-}
-
 .product__info--comment {
     margin-left: 2vw;
 }
