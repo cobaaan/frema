@@ -7,7 +7,6 @@
 @section('content')
 <ul class="header__list">
     <li class="header__list--item"><a href="/" id="logo"><img class="logo" src="{{ asset('images/logo.svg') }}" alt=""></a></li>
-    <li class="header__list--item"><input class="header__list--item-search" id="searchText" type="text" name="text" placeholder="何をお探しですか？"></li>
     <li class="header__list--item">
         <form class="header__list--item-form" action="/logout" method="post">
             @csrf

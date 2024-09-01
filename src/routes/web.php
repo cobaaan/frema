@@ -57,7 +57,7 @@ Route::prefix('mail')->group(function () {
 Route::prefix('credit')->group(function () {
     Route::get('/', [PaymentController::class, 'credit']);
     Route::post('/', [PaymentController::class, 'credit']);
-    Route::post('/payment/credit', [PaymentController::class, 'paymentCredit'])->name('payment.credit');
+    Route::post('/payment', [PaymentController::class, 'paymentCredit'])->name('payment.credit');
 });
 
 Route::get('/profile{id}', [ProfileController::class, 'profilePage'])->name('profile.page');
@@ -77,6 +77,5 @@ Route::prefix('purchase')->group(function () {
     Route::post('/{id}', [PurchaseController::class, 'purchasePage'])->name('purchase.page');
 });
 
-Route::get('/sell', [SellController::class, 'sellPage'])->name('sell.page');
-Route::post('/sell', [SellController::class, 'sell']);
+Route::get('/sell/page', [SellController::class, 'sellPage'])->name('sell.page');
 Route::post('/sell', [SellController::class, 'sell'])->middleware('web');

@@ -20,12 +20,12 @@
             @elseif (Auth::check())
             <button class="header__list--item-btn">ログアウト</button>
             <a class="header__list--item-btn"  href="{{ route('my.page', ['id' => $auth->id]) }}">マイページ</a>
-            <a class="header__list--item-btn-black" href="/sell">出品</a>
+            <a class="header__list--item-btn-black" href="/sell/page">出品</a>
             
             @else
             <a class="header__list--item-btn" href="/login">ログイン</a>
             <a class="header__list--item-btn" href="/register">会員登録</a>
-            <a class="header__list--item-btn-black" href="/sell">出品</a>
+            <a class="header__list--item-btn-black" href="/sell/page">出品</a>
             @endif
         </form>
     </li>

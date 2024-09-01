@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="main">
-    <h2 class="main__ttl">Stripe決済</h2>
+    <h2 class="main__ttl">クレジット決済</h2>
     <form id="card-form" action="{{ route('payment.credit') }}" method="POST">
         @csrf
         
